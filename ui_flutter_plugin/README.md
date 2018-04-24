@@ -1,6 +1,6 @@
 # ui_flutter_plugin
 
-Flutter公用插件. by YangYxd
+A new Flutter plugin.
 
 ## Getting Started
 

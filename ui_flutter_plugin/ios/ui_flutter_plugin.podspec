@@ -4,13 +4,13 @@
 Pod::Spec.new do |s|
   s.name             = 'ui_flutter_plugin'
   s.version          = '0.0.1'
-  s.summary          = 'Flutter公用插件. by YangYxd'
+  s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
-Flutter公用插件. by YangYxd
+A new Flutter plugin.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Your Company' => 'yangyxd@126.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'

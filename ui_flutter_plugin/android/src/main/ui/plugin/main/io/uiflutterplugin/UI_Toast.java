@@ -1,4 +1,4 @@
-package ui.plugin.main.io.uiflutterplugin;
+package android.src.main.ui.plugin.main.io.uiflutterplugin;
 
 import android.content.Context;
 import android.view.Gravity;
