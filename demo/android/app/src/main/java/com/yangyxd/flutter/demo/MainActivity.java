@@ -1,4 +1,4 @@
-package com.yangyxd.flutter.flutterdemo;
+package com.yangyxd.flutter.demo;
 
 import android.os.Bundle;
 

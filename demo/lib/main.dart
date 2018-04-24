@@ -4,7 +4,8 @@ import 'netimage.dart';
 import 'listview_h.dart';
 import 'listview_tree.dart';
 import 'gridview_v.dart';
-import 'package:ui_flutter_plugin/ui_toast.dart';
+import 'utils/common.dart';
+
 
 void main() => runApp(new MyApp());
 
@@ -80,7 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           new RandomWords(title: _title))); // 开始新的Page，保留当前page
           //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("选择了 $result 项。")));
           if (result != null) {
-              Toast.show("选择了 $result 项。");
+              //Toast.show("选择了 $result 项。");
+              Common.toast("选择了 $result 项。");
 
 //              showDialog<Null>(
 //                  context: context,

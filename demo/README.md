@@ -1,6 +1,6 @@
-# flutter_demo
+# demo
 
-Flutter Demo.  By YangYxd
+A new Flutter application.
 
 ## Getting Started
 
