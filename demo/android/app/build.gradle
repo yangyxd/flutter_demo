@@ -14,8 +14,9 @@ if (flutterRoot == null) {
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
 
     lintOptions {
         disable 'InvalidPackage'
@@ -25,10 +26,20 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.yangyxd.flutter.demo"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        // 配置发布模式签名
+        release {
+            keyAlias 'key0'
+            keyPassword 'android'
+            storeFile file('../key.properties.jks')
+            storePassword 'android'
+        }
     }
 
     buildTypes {
@@ -36,6 +47,8 @@ android {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
+            // 发布模式需要注释上面一行，启用下面这行
+            // signingConfig signingConfigs.release   // Cmd: flutter build apk
         }
     }
 }
