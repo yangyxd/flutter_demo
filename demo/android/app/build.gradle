@@ -32,15 +32,15 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        // 配置发布模式签名
-        release {
-            keyAlias 'key0'
-            keyPassword 'android'
-            storeFile file('../key.properties.jks')
-            storePassword 'android'
-        }
-    }
+//    signingConfigs {
+//        // 配置发布模式签名
+//        release {
+//            keyAlias 'key0'
+//            keyPassword 'android'
+//            storeFile file('../key.properties.jks')
+//            storePassword 'android'
+//        }
+//    }
 
     buildTypes {
         release {
