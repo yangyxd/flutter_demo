@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:demo/utils/common.dart';
 
 class ListViewHDemo extends StatefulWidget {
   final String title;
@@ -16,7 +17,7 @@ class ListViewHDemoState extends State<ListViewHDemo> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(title),
+          title: new Text(title), elevation: Common.Elevation,
         ),
         body: new Container(
             margin: new EdgeInsets.symmetric(vertical: 20.0),

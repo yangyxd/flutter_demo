@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';  // 在 pubspec.yaml 中加入： transparent_image: ^0.1.0
 import 'package:cached_network_image/cached_network_image.dart'; // 在 pubspec.yaml 中加入： cached_network_image: "^0.4.0"
+import 'package:demo/utils/common.dart';
 
 class NetImageDemo extends StatefulWidget {
   final String title;
@@ -19,6 +20,7 @@ class NetImageDemoState extends State<NetImageDemo> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(title),
+        elevation: Common.Elevation,
       ),
       body: new ListView(
         padding: new EdgeInsets.all(6.0),
@@ -34,7 +36,11 @@ class NetImageDemoState extends State<NetImageDemo> {
           new Image.network('http://img.zcool.cn/community/01b1b3590877caa8012145507aec92.gif',),
           new Text('使用缓存图片'),
           new CachedNetworkImage(
-            placeholder: new CircularProgressIndicator(),
+//            placeholder: new CircularProgressIndicator(
+//              strokeWidth: 1.0,
+//            ),
+            placeholder: new LinearProgressIndicator(),
+            //placeholder: new RefreshProgressIndicator(),
             imageUrl: 'https://github.com/flutter/website/blob/master/_includes/code/layout/lakes/images/lake.jpg?raw=true',
           ),
         ],

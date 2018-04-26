@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:demo/utils/common.dart';
 
 class RandomWords extends StatefulWidget {
   final String title;
@@ -30,7 +31,7 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(title),
-        elevation: 0.5,
+        elevation: Common.Elevation,
         actions: <Widget>[
           // 添加一个菜单按钮，点击切换到收藏列表
           new IconButton(
@@ -132,6 +133,7 @@ class RandomWordsState extends State<RandomWords> {
 
         return new Scaffold(
           appBar: new AppBar(
+            elevation: Common.Elevation,
             title: new Text('收藏的列表项目'),
           ),
           body: new ListView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:demo/utils/common.dart';
 
 class ListViewTreeDemo extends StatefulWidget {
     final String title;
@@ -23,7 +24,7 @@ class ListViewTreeDemoState extends State<ListViewTreeDemo> {
   Widget build(BuildContext context) {
     return new Scaffold (
         appBar: new AppBar(
-          title: new Text(title),
+          title: new Text(title), elevation: Common.Elevation,
         ),
         body: new Container(
             margin: new EdgeInsets.symmetric(vertical: 12.0),

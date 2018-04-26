@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:demo/utils/common.dart';
 import 'package:demo/demo/randomwords.dart';
 import 'package:demo/demo/netimage.dart';
 import 'package:demo/demo/listview_h.dart';
 import 'package:demo/demo/listview_tree.dart';
 import 'package:demo/demo/gridview_v.dart';
 import 'package:demo/demo/AnimatedList.dart';
-import 'utils/common.dart';
+import 'package:demo/demo/ExpansionTile.dart';
+import 'package:demo/demo/TabbedAppBar.dart';
+import 'package:demo/demo/FadeAppTest.dart';
+import 'package:demo/demo/SignaturePainter.dart';
+import 'package:demo/demo/AsyncLoadListView.dart';
 
 
 void main() => runApp(new MyApp());
@@ -13,11 +18,25 @@ void main() => runApp(new MyApp());
 final demoNames = <String>[
     '无限滚动列表',
     '显示网上的图片',
-    '水平 ListView',
+    '水平(ListView)',
     '不同类型的子项',
-    '格子列表 GridList',
-    '卡片列表 AnimatedList'
-] ;
+    '格子列表(GridList)',
+    '卡片列表(AnimatedList)',
+    '多级列表(ExpansionTile)',
+    '选项卡式AppBar',
+    '动画示例',
+    '绘制画布Canvas',
+    '异步加载列表'
+];
+
+//final List<Widget> demoWidgetClass = new List<Widget>.unmodifiable([
+//    NetImageDemo,
+//    ListViewHDemo,
+//    ListViewTreeDemo,
+//    GridViewDemo,
+//    AnimatedListSample,
+//    ExpansionTileSample,
+//]);
 
 class MyApp extends StatelessWidget {
 
@@ -26,7 +45,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'App Title',
       theme: new ThemeData(
-          primaryColor: Colors.white,  // 标题工具栏主题颜色
+          primaryColor: const Color(0xFFfffff8),  // 标题工具栏主题颜色
           //primaryColorLight: Colors.yellow,
           //splashColor: Colors.grey,  // 水波颜色
           //dividerColor: Colors.black,
@@ -36,16 +55,20 @@ class MyApp extends StatelessWidget {
           //cardColor: Colors.yellow,
       ),
       routes: <String, WidgetBuilder>{
-        '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
-        '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
-        '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
-        '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
-        '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
+          '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
+          '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
+          '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
+          '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
+          '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
+          '/6': (BuildContext context) => new ExpansionTileSample(title: demoNames[6]),
+          '/7': (BuildContext context) => new TabbedAppBarSample(title: demoNames[7]),
+          '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
+          '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
+          '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
       },
       home: new MyHomePage(),
     );
   }
-
 
 }
 
@@ -106,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
   );
 
   // 接收页面返回值 demo
-  _showRandowWords(BuildContext context, String _title) async {
+  void _showRandowWords(BuildContext context, String _title) async {
       try {
           final result = await Navigator.push(
                   context,

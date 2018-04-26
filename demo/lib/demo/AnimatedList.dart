@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:demo/utils/common.dart';
 
 class AnimatedListSample extends StatefulWidget {
 	final String title;
@@ -22,6 +23,7 @@ class AnimatedListSampleState extends State<AnimatedListSample> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
+				elevation: Common.Elevation,
 				title: new Text(this.title, maxLines: 1),
 				actions: <Widget>[
 					new IconButton(

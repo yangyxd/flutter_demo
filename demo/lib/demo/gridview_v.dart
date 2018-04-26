@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:demo/utils/common.dart';
 
 class GridViewDemo extends StatefulWidget {
     final String title;
@@ -16,7 +17,7 @@ class GridViewDemoState extends State<GridViewDemo> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(title),
+          title: new Text(title), elevation: Common.Elevation,
         ),
         body: new GridView.count(
             crossAxisCount: 2,

@@ -5,6 +5,10 @@ import 'package:fluttertoast/fluttertoast.dart';
  * 公共函数库 by YangYxd
  */
 class Common {
+	/**
+	 * 默认 Elevation
+	 */
+	static final double Elevation = 0.5;
 
 	/**
 	 * 显示Toast消息
