@@ -30,6 +30,7 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(title),
+        elevation: 0.5,
         actions: <Widget>[
           // 添加一个菜单按钮，点击切换到收藏列表
           new IconButton(
