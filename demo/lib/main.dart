@@ -26,7 +26,8 @@ final demoNames = <String>[
     '选项卡式AppBar',
     '动画示例',
     '绘制画布Canvas',
-    '异步加载列表'
+    '异步加载列表',
+    '-'
 ];
 
 //final List<Widget> demoWidgetClass = new List<Widget>.unmodifiable([
@@ -112,6 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (context, index) {
                 if (index < demoNames.length) {
                     final item = demoNames[index];
+                    if (item == '-') {
+                        return new Divider();
+                    }
                     return new ListTile(
                         leading: new Icon(Icons.list),
                         title: new Text(item),
