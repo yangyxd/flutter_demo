@@ -11,6 +11,7 @@ import 'package:demo/demo/TabbedAppBar.dart';
 import 'package:demo/demo/FadeAppTest.dart';
 import 'package:demo/demo/SignaturePainter.dart';
 import 'package:demo/demo/AsyncLoadListView.dart';
+import 'package:demo/demo/OnlineNovelRead.dart';
 
 
 void main() => runApp(new MyApp());
@@ -27,7 +28,8 @@ final demoNames = <String>[
     '动画示例',
     '绘制画布Canvas',
     '异步加载列表',
-    '-'
+    '-',
+    '在线小说阅读'
 ];
 
 //final List<Widget> demoWidgetClass = new List<Widget>.unmodifiable([
@@ -66,6 +68,7 @@ class MyApp extends StatelessWidget {
           '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
           '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
           '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
+          '/12': (BuildContext context) => new OnlineNovelReadDemoSample(title: demoNames[12]),
       },
       home: new MyHomePage(),
     );
@@ -110,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: new ListView.builder(
+            itemCount: demoNames.length,
             itemBuilder: (context, index) {
                 if (index < demoNames.length) {
                     final item = demoNames[index];
@@ -126,8 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Navigator.pushNamed(context, '/$index'); // 使用命名导航
                         },
                     );
-                } else
-                    return null;
+                };
             }
           ),
   );

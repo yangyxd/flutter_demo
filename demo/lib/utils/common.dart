@@ -1,4 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
 //import 'package:ui_flutter_plugin/ui_toast.dart';
 
 /**
@@ -21,5 +22,21 @@ class Common {
 			gravity: gravity,
 			toastLength: toastLength
 		);
+	}
+
+	static buildSubTitle(int size){
+		return new TextStyle(color: new Color(0xFF757575), fontSize: size.toDouble());
+	}
+
+	static buildTitle(int size){
+		return new TextStyle(color: Colors.black87, fontSize: size.toDouble());
+	}
+
+	static buildStyle(Color color, int size){
+		return new TextStyle(color: color, fontSize: size.toDouble());
+	}
+
+	static buildStyleAndSpace(Color color, int size, double space){
+		return new TextStyle(color: color, fontSize: size.toDouble(), height: space);
 	}
 }
