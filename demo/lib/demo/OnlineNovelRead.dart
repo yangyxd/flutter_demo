@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:demo/utils/common.dart';
 import 'online_novel_read_pages/HomePage.dart';
+import 'online_novel_read_pages/SavePage.dart';
 
+/**
+ * 本示例源自 https://github.com/badboy-tian/flutter_panovel_app
+ * 此处仅作学习交流之用，感谢原作者
+ */
 class OnlineNovelReadDemoSample extends StatefulWidget {
 	final String title;
 	OnlineNovelReadDemoSample({this.title});
@@ -34,14 +39,14 @@ class OnlineNovelReadDemoSampleState extends State<OnlineNovelReadDemoSample> {
 						offstage: _currentIndex != 1,
 						child: new TickerMode(
 							enabled: _currentIndex == 1,
-							//child: new SavePage(),
+							child: new SavePage(),
 						)
 					),
 					new Offstage(
 						offstage: _currentIndex != 2,
 						child: new TickerMode(
 							enabled: _currentIndex == 2,
-							//child: new MePage(),
+							child: new MePage(),
 						)
 					),
 				],
@@ -75,3 +80,19 @@ class OnlineNovelReadDemoSampleState extends State<OnlineNovelReadDemoSample> {
 
 }
 
+
+/// 关于我
+class MePage extends StatefulWidget {
+	@override
+	_MePageState createState() => new _MePageState();
+}
+
+class _MePageState extends State<MePage> {
+	@override
+	Widget build(BuildContext context) {
+		return new Scaffold(
+			appBar: new AppBar(title: new Text("我的"),elevation: Common.Elevation,),
+			body: new Center(child: new Text("敬请期待")),
+		);
+	}
+}

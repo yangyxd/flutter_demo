@@ -1,5 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
+
 //import 'package:ui_flutter_plugin/ui_toast.dart';
 
 /**
@@ -7,9 +8,19 @@ import 'package:flutter/material.dart';
  */
 class Common {
 	/**
+	 * 在线小说网址
+	 */
+	static final String book_baseurl = 'https://m.biquguan.com';
+
+	/**
 	 * 默认 Elevation
 	 */
 	static final double Elevation = 0.5;
+
+	/**
+	 * 默认行分隔线颜色
+	 */
+	static var lineColor = new Color(0xFFdbdbdb);
 
 	/**
 	 * 显示Toast消息
@@ -39,4 +50,6 @@ class Common {
 	static buildStyleAndSpace(Color color, int size, double space){
 		return new TextStyle(color: color, fontSize: size.toDouble(), height: space);
 	}
+
+
 }

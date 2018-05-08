@@ -1,7 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:demo/utils/common.dart';
-import 'package:html/dom.dart' as dom;
+import 'package:html/parser.dart' as parse;
+import 'package:http/http.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'BookDetailPage.dart';
+import 'BookBeans.dart';
+import 'SearchResultPage.dart';
 
 /// 主页
 class HomePage extends StatefulWidget {
@@ -29,33 +34,33 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 		new Tab(text: "排行")
 	];
 
-	var _tabBarView = <Widget>[];
+	final _tabBarView = [
+		new HomeSubPage(
+			index: 1,
+		),
+		new HomeSubPage(
+			index: 2,
+		),
+		new HomeSubPage(
+			index: 3,
+		),
+		new HomeSubPage(
+			index: 4,
+		),
+		new HomeSubPage(
+			index: 5,
+		),
+		new HomeSubPage(
+			index: 6,
+		),
+		new HomeSubPage(
+			index: 7,
+		),
+		new HomeRankPage()
+	];
 
 	_HomePageState(this.title) {
-		_tabBarView = [
-			new HomeSubPage(
-				index: 1,
-			),
-			new HomeSubPage(
-				index: 2,
-			),
-			new HomeSubPage(
-				index: 3,
-			),
-			new HomeSubPage(
-				index: 4,
-			),
-			new HomeSubPage(
-				index: 5,
-			),
-			new HomeSubPage(
-				index: 6,
-			),
-			new HomeSubPage(
-				index: 7,
-			),
-//			new HomeRankPage()
-		];
+		//
 	}
 
 	@override
@@ -76,6 +81,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
+				elevation: Common.Elevation,
 				title: isSearch ? buildSearchView() : new Text(this.title),
 				bottom: new TabBar(
 					isScrollable: true,
@@ -130,18 +136,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 	Widget buildSearchView() {
 		return new TextField(
 			controller: editController,
-			style: Common.buildStyle(Colors.grey, 15),
+			style: Common.buildStyle(Colors.black, 15),
 			decoration: new InputDecoration(
 					border: InputBorder.none,
-					hintText: "书名/作者",
-					hintStyle: Common.buildStyle(Colors.white30, 15),
+					hintText: "搜索书名/作者",
+					hintStyle: Common.buildStyle(Colors.grey, 15),
 					suffixIcon: new Offstage(
 						offstage:
 						editController.text == null || editController.text.isEmpty,
 						child: new IconButton(
 								icon: Icon(
-									Icons.clear,
-									color: Colors.white,
+									Icons.refresh,
+									color: Colors.grey,
 								),
 								onPressed: () {
 									setState(() {
@@ -153,8 +159,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 							padding: new EdgeInsets.only(
 									left: 0.0, right: 8.0, top: 8.0, bottom: 8.0),
 							icon: new Icon(
-								Icons.arrow_back,
-								color: Colors.white,
+								Icons.close,
+								color: Colors.grey,
 							),
 							onPressed: () {
 								setState(() {
@@ -167,10 +173,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 					editController.clear();
 					isSearch = false;
 				});
-//				Navigator.push(
-//						context,
-//						new MyCustomRoute(
-//								builder: (_) => new SearchResultPage(words: text)));
+				Navigator.push(
+					context,
+					new MyCustomRoute(
+						builder: (_) => new SearchResultPage(words: text)));
 			},
 			onChanged: (text) {
 				setState(() {});
@@ -179,62 +185,211 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 	}
 }
 
+// 排行页面
+class HomeRankPage extends StatefulWidget {
+	@override
+	_HomeRankPageState createState() => new _HomeRankPageState();
+}
+
+class _HomeRankPageState extends State<HomeRankPage> {
+
+	@override
+	Widget build(BuildContext context) {
+		return new Container();
+	}
+}
+
 // 主页子页面
 class HomeSubPage extends StatefulWidget {
 	final int index;
 	final ValueChanged<bool> hideBottom;
 
-	HomeSubPage({Key key, this.index, this.hideBottom}) : super(key: key);
+	final List<BklistItem> _datas = [];
+	final _scroller = new ScrollController();
+
+	HomeSubPage({Key key, this.index, this.hideBottom}) : super(key: key) {
+	}
 
 	@override
-	_HomeItemState createState() => new _HomeItemState(index, this.hideBottom);
+	_HomeItemState createState() => new _HomeItemState(index, this.hideBottom, this._datas, this._scroller);
 }
 
 class _HomeItemState extends State<HomeSubPage> {
-	final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-	new GlobalKey<RefreshIndicatorState>();
-
-	List<BklistItem> _datas = [];
+	final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
+	final List<BklistItem> _datas;
 
 	var index = 1;
 	final ValueChanged<bool> hideBottom;
 	ScrollController _scroller;
 
-	_HomeItemState(this.index, this.hideBottom);
+	_HomeItemState(this.index, this.hideBottom, this._datas, this._scroller);
+
+	@override
+	void initState() {
+		super.initState();
+		// 初始化加载数据
+		if (_datas.isEmpty)
+			loadDatas(false);
+	}
 
 	@override
 	Widget build(BuildContext context) {
-		return new Center(child: new CircularProgressIndicator());
+		if (_datas.isEmpty) {
+			return new Center(child: new CircularProgressIndicator());
+		} else {
+			var c = _datas.length;
+			if (isLoadingmore)
+				c++;
+			return new NotificationListener(
+				onNotification: onNotification,
+				child: new RefreshIndicator(
+					key: _refreshIndicatorKey,
+					child: new ListView.builder(
+						physics: new AlwaysScrollableScrollPhysics(),
+						controller: _scroller,
+						itemCount: c,
+						itemBuilder: buildBkItem,
+						padding: new EdgeInsets.only(top: 10.0, bottom: 10.0),
+					),
+					onRefresh: refresh));
+		}
 	}
-}
 
-// 小说列表项
-class BklistItem {
-	String img;
-	String title;
-	String author;
-	String review;
-	String url;
-	String bookID;
-
-	@override
-	String toString() {
-		return 'BklistItem{img: $img, title: $title, author: $author, review: $review, url: $url, bookID: $bookID}';
+	bool onNotification(Notification notification) {
+		// 如果滚动到底部了，加载更多
+		if (notification is OverscrollNotification) {
+			if (!isLoadingmore) {
+				isLoadingmore = true;
+				print("loading more");
+				if (_currentPage > _totalPage) {
+					setState(() {
+						isLoadingmore = false;
+					});
+					return true;
+				}
+				setState(() {
+					_currentPage++;
+				});
+				loadDatas(false);
+			}
+		}
+		return true;
 	}
 
-	static List<BklistItem> parse(List<dom.Element> es) {
-		List<BklistItem> datas = [];
-		es.forEach((e) {
-			var item = BklistItem();
-			item.title = e.querySelector("p.title").text.trim();
-			item.author = e.querySelector("p.author").text.trim();
-			item.img = e.querySelector("img.lazy").attributes["data-original"].trim();
-			item.review = e.querySelector("p.review").text.trim();
-			item.url = e.querySelector("a").attributes["href"].trim();
-			item.bookID = item.url.replaceAll("/", "");
-			datas.add(item);
+	bool isLoadingmore = false; // 是否正在加载更多
+	int _currentPage = 1; // 当前已加载的页数
+	int _totalPage = 1; // 总页数
+
+	// 刷新
+	Future<Null> refresh() async {
+		setState(() {
+			_currentPage = 1;
 		});
+		await loadDatas(true);
+	}
 
-		return datas;
+
+	// 加载数据
+	Future loadDatas(bool refresh) async {
+		var url = "${Common.book_baseurl}/bqgclass/$index/$_currentPage.html";
+		print(url);
+		var response = await get(url);
+		var html = parse.parse(response.body);
+		var itemData = html.getElementsByClassName("hot_sale");
+		_totalPage = int.parse(
+				html.getElementById("txtPage").attributes["value"].split("/")[1]);
+
+		if (isLoadingmore) {
+			isLoadingmore = false;
+		}
+		if (!mounted) return;
+		setState(() {
+			if (refresh) {
+				_datas.clear();
+			}
+			_datas.addAll(BklistItem.parse(itemData));
+		});
+	}
+
+	// 构造列表项
+	Widget buildBkItem(BuildContext context, int index) {
+
+		if (isLoadingmore && index == _datas.length) {
+			return new Row(
+				mainAxisAlignment: MainAxisAlignment.center,
+				children: <Widget>[
+					new Text(
+						'正在加载数据...',
+						style: new TextStyle(fontSize: 15.0, height: 2.0, color: new Color(0xFFd0d0d0)),
+					)
+				],
+			);
+		}
+
+		var item = _datas[index];
+		return new InkWell(
+			onTap: () {
+				print(item.url);
+				if (hideBottom != null) {
+					hideBottom(true);
+				}
+				Navigator.push(
+					context,
+					new MyCustomRoute(
+							builder: (_) => new BookDetailPage(bookid: item.bookID, title: item.title,)
+					));
+			},
+			child: new Container(
+				child: new Row(
+					mainAxisAlignment: MainAxisAlignment.center,
+					children: <Widget>[
+						new Container(
+							child: new CachedNetworkImage(
+								imageUrl: item.img,
+								width: 60.0, height: 80.0),
+							padding: new EdgeInsets.only(left: 10.0, right: 10.0, top: 5.0, bottom: 5.0),
+						),
+						new Expanded(
+							child: new Column(
+								crossAxisAlignment: CrossAxisAlignment.start,
+								children: <Widget>[
+									new Row(
+										children: <Widget>[
+											new Text(
+												item.title,
+												style: new TextStyle(fontSize: 15.0, color: new Color(0xFF212121)),
+											)
+										],
+									),
+									new Row(
+										children: <Widget>[
+											new Expanded(
+												child: new Text(
+													item.review,
+													maxLines: 2,
+													overflow: TextOverflow.ellipsis,
+													style: new TextStyle(fontSize: 12.0, color: new Color(0xFF757575)),
+												),
+											)
+										],
+									),
+									new Row(
+										children: <Widget>[
+											new Text(
+												item.author,
+												style: new TextStyle(fontSize: 12.0, color: new Color(0xFF757575)),
+											)
+										],
+									),
+								]
+							)
+						)
+					],
+				),
+				decoration: new BoxDecoration(
+					border: new Border(bottom: new BorderSide(color: Common.lineColor, width: 0.5))),
+			));
 	}
 }
+
+
