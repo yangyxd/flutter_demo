@@ -1,4 +1,4 @@
-*.dart linguist-language=flutter
-*.m linguist-language=flutter
-*.h linguist-language=flutter
-*.java linguist-language=flutter
+*.dart linguist-language=Dart
+*.m linguist-language=Dart
+*.h linguist-language=Dart
+*.java linguist-language=Dart
