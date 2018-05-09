@@ -122,7 +122,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     }
                     return new ListTile(
                         leading: new Icon(Icons.list),
-                        title: new Text(item),
+                        title: new Text(
+                                item,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: new TextStyle(
+                                    decorationColor: Colors.red[400],
+                                    decorationStyle: TextDecorationStyle.solid,
+                                    letterSpacing: 0.0,
+                                    //fontWeight: FontWeight.lerp(FontWeight.w100, FontWeight.w900, 0.1),
+
+                                ),
+                        ),
                         onTap: () {
                             if (index == 0)
                                 _showRandowWords(context, demoNames[0]);
