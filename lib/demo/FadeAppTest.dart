@@ -22,7 +22,7 @@ class FadeAppTestSampleState extends State<FadeAppTestSample> with TickerProvide
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text(this.title),
 			),
 			body: new Center(

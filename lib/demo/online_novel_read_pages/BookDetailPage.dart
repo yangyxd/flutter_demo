@@ -61,7 +61,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 			child: new Scaffold(
 				key: key,
 				appBar: new AppBar(
-					elevation: Common.Elevation,
+					elevation: Styles.Elevation,
 					title: new Text("${_bkDetail.name}"),
 					actions: <Widget>[
 						new IconButton(
@@ -177,7 +177,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 	}
 
 	void showMsg(String msg) {
-		Common.toast(msg);
+		Tools.toast(msg);
 	}
 
 	bool _isLoading = true;
@@ -210,14 +210,14 @@ class _BookDetailPageState extends State<BookDetailPage> {
 												crossAxisAlignment: CrossAxisAlignment.start,
 												children: <Widget>[
 													new Text("作者：" + _bkDetail.author,
-															style: Common.buildTitle(16)),
+															style: Styles.buildTitle(16)),
 													new Text("类别：" + _bkDetail.type,
-															style: Common.buildSubTitle(13)),
+															style: Styles.buildSubTitle(13)),
 													new Text("状态：" + _bkDetail.state,
-															style: Common.buildSubTitle(13)),
+															style: Styles.buildSubTitle(13)),
 													new Text(
 														"更新：" + _bkDetail.updateDate,
-														style: Common.buildSubTitle(13),
+														style: Styles.buildSubTitle(13),
 														maxLines: 1,
 														overflow: TextOverflow.ellipsis,
 													),
@@ -227,7 +227,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 																	_bkDetail.newName, _chapterID));
 														},
 														child: new Text("最新：" + _bkDetail.newName,
-																style: Common.buildSubTitle(13))),
+																style: Styles.buildSubTitle(13))),
 												],
 											))))
 							],
@@ -243,9 +243,8 @@ class _BookDetailPageState extends State<BookDetailPage> {
 									padding: new EdgeInsets.only(right: 5.0),
 									child: new RaisedButton(
 										onPressed: () {
-											Navigator.of(context).push(new MyCustomRoute(
-													builder: (_) => new AllChapterPage(
-															_bkDetail.bookid, _bkDetail.name)));
+											Tools.startPage(context, new AllChapterPage(
+															_bkDetail.bookid, _bkDetail.name));
 										},
 										color: new Color(0xFF6AABF2),
 										textColor: Colors.white,
@@ -258,7 +257,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 					padding: new EdgeInsets.all(15.0),
 					child: new Text(
 						html2md.convert(_bkDetail.prewtext),
-						style: Common.buildSubTitle(13),
+						style: Styles.buildSubTitle(13),
 					),
 				),
 				new Padding(
@@ -275,17 +274,16 @@ class _BookDetailPageState extends State<BookDetailPage> {
 											new Padding(
 												padding: new EdgeInsets.only(left: 15.0),
 												child: new Text("更新时间：" + _bkDetail.updateDate,
-														style: Common.buildStyle(Colors.green, 13))),
+														style: Styles.buildStyle(Colors.green, 13))),
 											new Padding(
 												padding: new EdgeInsets.only(right: 15.0),
 												child: new GestureDetector(
 													onTapUp: (_) {
-														Navigator.of(context).push(new MyCustomRoute(
-																builder: (_) => new AllChapterPage(
-																		_bkDetail.bookid, _bkDetail.name)));
+														Tools.startPage(context, new AllChapterPage(
+																		_bkDetail.bookid, _bkDetail.name));
 													},
 													child: new Text("全部章节",
-															style: Common.buildStyle(Colors.blue, 13)))),
+															style: Styles.buildStyle(Colors.blue, 13)))),
 										],
 									)),
 							))
@@ -308,7 +306,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 												},
 												child: new Text(
 													chapter.name,
-													style: Common.buildSubTitle(14),
+													style: Styles.buildSubTitle(14),
 												)),
 										)
 									]
@@ -330,7 +328,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
 	}
 
 	jumpToReader(Chapter chpter) {
-		Navigator.push(context, new MyCustomRoute(builder: (_) => new ReaderPage(chpter)));
+		Tools.startPage(context, new ReaderPage(chpter));
 	}
 
 	@override

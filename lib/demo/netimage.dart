@@ -20,7 +20,7 @@ class NetImageDemoState extends State<NetImageDemo> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(title),
-        elevation: Common.Elevation,
+        elevation: Styles.Elevation,
       ),
       body: new ListView(
         padding: new EdgeInsets.all(6.0),

@@ -33,7 +33,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text("\"$words\"搜索结果"),
 			),
 			body: buildBody(),
@@ -100,12 +100,9 @@ class _SearchResultPageState extends State<SearchResultPage> {
 				var book = new BklistItem();
 				book.bookID = item.bookid;
 				book.author = item.author;
-				Navigator.push(
-						context,
-						new MyCustomRoute(
-								builder: (_) => new BookDetailPage(
-									bookid: item.bookid, title: item.name,
-								)));
+				Tools.startPage(context, new BookDetailPage(
+					bookid: item.bookid, title: item.name,
+				));
 			},
 			child: new Container(
 				padding: new EdgeInsets.only(
@@ -117,7 +114,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
 								new Expanded(
 										child: new Text(
 											item.name.trim(),
-											style: Common.buildTitle(14),
+											style: Styles.buildTitle(14),
 										))
 							],
 						),
@@ -126,7 +123,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
 								new Expanded(
 										child: new Text(
 											item.author.trim(),
-											style: Common.buildSubTitle(12),
+											style: Styles.buildSubTitle(12),
 										))
 							],
 						),
@@ -135,14 +132,14 @@ class _SearchResultPageState extends State<SearchResultPage> {
 								new Expanded(
 										child: new Text(
 											item.newName.trim(),
-											style: Common.buildSubTitle(12),
+											style: Styles.buildSubTitle(12),
 										))
 							],
 						),
 					],
 				),
 				decoration: new BoxDecoration(
-						border: new Border(bottom: new BorderSide(color: Common.lineColor, width: 0.5))),
+						border: new Border(bottom: new BorderSide(color: Styles.lineColor, width: 0.5))),
 			));
 	}
 }

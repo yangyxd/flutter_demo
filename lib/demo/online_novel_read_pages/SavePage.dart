@@ -22,7 +22,7 @@ class _SavePageState extends State<SavePage> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text("收藏"),
 			),
 			body: buildBody(),
@@ -109,10 +109,8 @@ class _SavePageState extends State<SavePage> {
 				key: new Key(book.toString()),
 				child: new InkWell(
 						onTap: () {
-							Navigator.push(
-								context,
-								new MyCustomRoute(
-									builder: (_) => new BookDetailPage(bookid: book.bookid, title: book.name,)));
+							Tools.startPage(
+								context,new BookDetailPage(bookid: book.bookid, title: book.name,));
 						},
 						child: new Container(
 							child: new Row(
@@ -132,37 +130,35 @@ class _SavePageState extends State<SavePage> {
 												children: <Widget>[
 													new Row(
 														children: <Widget>[
-															new Text(book.name, style: Common.buildTitle(14))
+															new Text(book.name, style: Styles.buildTitle(14))
 														],
 													),
 													new Row(
 														children: <Widget>[
 															new Text(
 																"作者:  " + book.author,
-																style: Common.buildSubTitle(12),
+																style: Styles.buildSubTitle(12),
 															)
 														],
 													),
 													new GestureDetector(
 															onTap: () {
-																Navigator.push(
-																		context,
-																		new MyCustomRoute(
-																				builder: (_) => new ReaderPage(new Chapter(
+																Tools.startPage(
+																		context, new ReaderPage(new Chapter(
 																						book.bookid,
 																						book.newChapterName,
-																						book.newChapterID))));
+																						book.newChapterID)));
 															},
 															child: new Row(
 																children: <Widget>[
 																	new Text(
 																		"最近更新:  ",
-																		style: Common.buildSubTitle(12),
+																		style: Styles.buildSubTitle(12),
 																	),
 																	new Expanded(
 																			child: new Text(
 																				book.newChapterName,
-																				style: Common.buildStyle(Colors.redAccent, 12),
+																				style: Styles.buildStyle(Colors.redAccent, 12),
 																				maxLines: 1,
 																				overflow: TextOverflow.ellipsis,
 																			)),
@@ -170,24 +166,22 @@ class _SavePageState extends State<SavePage> {
 															)),
 													new GestureDetector(
 															onTap: () {
-																Navigator.push(
-																		context,
-																		new MyCustomRoute(
-																				builder: (_) => new ReaderPage(new Chapter(
+																Tools.startPage(
+																		context, new ReaderPage(new Chapter(
 																						book.bookid,
 																						book.lastChapterName,
-																						book.lastChapterID))));
+																						book.lastChapterID)));
 															},
 															child: new Row(
 																children: <Widget>[
 																	new Text(
 																		"上次阅读:  ",
-																		style: Common.buildSubTitle(12),
+																		style: Styles.buildSubTitle(12),
 																	),
 																	new Expanded(
 																			child: new Text(
 																				book.lastChapterName,
-																				style: Common.buildStyle(Colors.redAccent, 12),
+																				style: Styles.buildStyle(Colors.redAccent, 12),
 																				maxLines: 1,
 																				overflow: TextOverflow.ellipsis,
 																			)),
@@ -200,7 +194,7 @@ class _SavePageState extends State<SavePage> {
 							decoration: new BoxDecoration(
 									border: new Border(
 											bottom:
-											new BorderSide(color: Common.lineColor, width: 0.5))),
+											new BorderSide(color: Styles.lineColor, width: 0.5))),
 						)));
 	}
 }

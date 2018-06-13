@@ -18,7 +18,7 @@ class SignaturePainterSampleState extends State<SignaturePainterSample>  {
 	@override
 	Widget build(BuildContext context) {
 		final appbar = new AppBar(
-			elevation: Common.Elevation,
+			elevation: Styles.Elevation,
 			title: new Text(this.title),
 		);
 
@@ -36,7 +36,7 @@ class SignaturePainterSampleState extends State<SignaturePainterSample>  {
 				setState(() {
 					RenderBox referenceBox = context.findRenderObject();
 					Offset p = referenceBox.globalToLocal(details.globalPosition);
-					p = p.translate(0.0, -(appbar.preferredSize.height));
+					p = p.translate(0.0, -Tools.getSysStatsHeight(context));
 
 					_points = new List.from(_points)..add(p);
 				});

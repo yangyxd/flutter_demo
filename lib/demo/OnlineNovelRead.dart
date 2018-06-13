@@ -91,7 +91,7 @@ class _MePageState extends State<MePage> {
 	@override
 	Widget build(BuildContext context) {
 		return new Scaffold(
-			appBar: new AppBar(title: new Text("我的"),elevation: Common.Elevation,),
+			appBar: new AppBar(title: new Text("我的"),elevation: Styles.Elevation,),
 			body: new Center(child: new Text("敬请期待")),
 		);
 	}

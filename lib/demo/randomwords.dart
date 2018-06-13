@@ -31,7 +31,7 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(title),
-        elevation: Common.Elevation,
+        elevation: Styles.Elevation,
         actions: <Widget>[
           // 添加一个菜单按钮，点击切换到收藏列表
           new IconButton(
@@ -133,7 +133,7 @@ class RandomWordsState extends State<RandomWords> {
 
         return new Scaffold(
           appBar: new AppBar(
-            elevation: Common.Elevation,
+            elevation: Styles.Elevation,
             title: new Text('收藏的列表项目'),
           ),
           body: new ListView(

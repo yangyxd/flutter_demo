@@ -30,7 +30,7 @@ class TabbedAppBarSampleState extends State<TabbedAppBarSample> {
 			length: choices.length,
 			child: new Scaffold(
 				appBar: new AppBar(
-					elevation: Common.Elevation,
+					elevation: Styles.Elevation,
 					title: new Text(this.title),
 					bottom: tabbar,
 				),

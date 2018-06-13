@@ -64,7 +64,7 @@ class _ReaderPageState extends State<ReaderPage> {
           padding: new EdgeInsets.all(10.0),
           child: Text(
             html2md.convert(text),
-            style: Common.buildStyleAndSpace(new Color(0xFF101010), 16, 1.5),
+            style: Styles.buildStyleAndSpace(new Color(0xFF101010), 16, 1.5),
           )),
       new Divider(
         height: 1.0,
@@ -92,11 +92,8 @@ class _ReaderPageState extends State<ReaderPage> {
               )),
           new FlatButton(
               onPressed: () {
-                Navigator.push(
-                    context,
-                    new MyCustomRoute(
-                        builder: (_) =>
-                            new AllChapterPage(chapter.bookid, "目录")));
+                Tools.startPage(
+                    context, new AllChapterPage(chapter.bookid, "目录"));
               },
               child: new Text("目录")),
           new FlatButton(
@@ -127,7 +124,7 @@ class _ReaderPageState extends State<ReaderPage> {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          elevation: Common.Elevation,
+          elevation: Styles.Elevation,
         ),
         body: new Container(
           child: new Center(child: new CircularProgressIndicator()),
@@ -145,7 +142,7 @@ class _ReaderPageState extends State<ReaderPage> {
             overflow: TextOverflow.ellipsis,
           ),
           pinned: false,
-          elevation: Common.Elevation,
+          elevation: Styles.Elevation,
           expandedHeight: 50.0,
           floating: true,
           snap: true,
@@ -213,7 +210,7 @@ class _ReaderPageState extends State<ReaderPage> {
         }
       });
     }).catchError((onError) {
-      Common.toast("错误:${onError.toString()}");
+      Tools.toast("错误:${onError.toString()}");
       Navigator.of(context).pop();
       print(onError.toString());
     });

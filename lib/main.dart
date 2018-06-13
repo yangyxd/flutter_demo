@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/utils/tools.dart';
 import './utils/common.dart';
 import './demo/randomwords.dart';
 import './demo/netimage.dart';
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     void _select(Choice choice) {
         setState(() { // Causes the app to rebuild with the new _selectedChoice.
-            Common.toast(choice.title);
+            Tools.toast(choice.title);
         });
     }
 
@@ -157,7 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("选择了 $result 项。")));
           if (result != null) {
               //Toast.show("选择了 $result 项。");
-              Common.toast("选择了 $result 项。");
+            Tools.toast("选择了 $result 项。");
 
 //              showDialog<Null>(
 //                  context: context,

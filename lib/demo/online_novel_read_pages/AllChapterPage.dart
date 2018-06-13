@@ -34,7 +34,7 @@ class _AllChapterPageState extends State<AllChapterPage> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text(_title),
 				actions: <Widget>[
 					new IconButton(icon: Icon(Icons.share), onPressed: () {})
@@ -78,10 +78,10 @@ class _AllChapterPageState extends State<AllChapterPage> {
 						),
 						decoration: new BoxDecoration(
 							border: new Border(
-								bottom:	new BorderSide(color: Common.lineColor, width: 0.5))),
+								bottom:	new BorderSide(color: Styles.lineColor, width: 0.5))),
 					)),
 			onTap: () {
-				Navigator.push(context, new MyCustomRoute(builder: (_)=> new ReaderPage(new Chapter(bookid, item.name, item.chapterid))));
+				Tools.startPage(context, new ReaderPage(new Chapter(bookid, item.name, item.chapterid)));
 				//print(index);
 			},
 		);

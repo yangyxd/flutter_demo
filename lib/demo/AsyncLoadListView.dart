@@ -23,7 +23,7 @@ class AsyncLoadListSampleState extends State<AsyncLoadListSample> {
 
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text(this.title),
 			),
 			body: getBody(),

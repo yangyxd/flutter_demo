@@ -18,7 +18,7 @@ class ExpansionTileState extends State<ExpansionTileSample> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text(this.title),
 			),
 			body: new ListView.builder(
@@ -107,7 +107,7 @@ class EntryItem extends StatelessWidget {
 					title: new Text(root.title),
 					trailing: new Icon(Icons.opacity),
 					onTap: () {
-						Common.toast(entry.title);
+						Tools.toast(entry.title);
 					},
 				),
 			);

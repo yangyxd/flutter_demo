@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: isSearch ? buildSearchView() : new Text(this.title),
 				bottom: new TabBar(
 					isScrollable: true,
@@ -136,11 +136,11 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 	Widget buildSearchView() {
 		return new TextField(
 			controller: editController,
-			style: Common.buildStyle(Colors.black, 15),
+			style: Styles.buildStyle(Colors.black, 15),
 			decoration: new InputDecoration(
 					border: InputBorder.none,
 					hintText: "搜索书名/作者",
-					hintStyle: Common.buildStyle(Colors.grey, 15),
+					hintStyle: Styles.buildStyle(Colors.grey, 15),
 					suffixIcon: new Offstage(
 						offstage:
 						editController.text == null || editController.text.isEmpty,
@@ -173,10 +173,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 					editController.clear();
 					isSearch = false;
 				});
-				Navigator.push(
-					context,
-					new MyCustomRoute(
-						builder: (_) => new SearchResultPage(words: text)));
+			  Tools.startPage(
+					context, new SearchResultPage(words: text));
 			},
 			onChanged: (text) {
 				setState(() {});
@@ -333,11 +331,8 @@ class _HomeItemState extends State<HomeSubPage> {
 				if (hideBottom != null) {
 					hideBottom(true);
 				}
-				Navigator.push(
-					context,
-					new MyCustomRoute(
-							builder: (_) => new BookDetailPage(bookid: item.bookID, title: item.title,)
-					));
+				Tools.startPage(
+					context, new BookDetailPage(bookid: item.bookID, title: item.title,));
 			},
 			child: new Container(
 				child: new Row(
@@ -387,7 +382,7 @@ class _HomeItemState extends State<HomeSubPage> {
 					],
 				),
 				decoration: new BoxDecoration(
-					border: new Border(bottom: new BorderSide(color: Common.lineColor, width: 0.5))),
+					border: new Border(bottom: new BorderSide(color: Styles.lineColor, width: 0.5))),
 			));
 	}
 }

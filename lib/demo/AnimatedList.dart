@@ -23,7 +23,7 @@ class AnimatedListSampleState extends State<AnimatedListSample> {
 	Widget build(BuildContext context) {
 		return new Scaffold(
 			appBar: new AppBar(
-				elevation: Common.Elevation,
+				elevation: Styles.Elevation,
 				title: new Text(this.title, maxLines: 1),
 				actions: <Widget>[
 					new IconButton(

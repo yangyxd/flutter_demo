@@ -17,7 +17,7 @@ class ListViewHDemoState extends State<ListViewHDemo> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text(title), elevation: Common.Elevation,
+          title: new Text(title), elevation: Styles.Elevation,
         ),
         body: new Container(
             margin: new EdgeInsets.symmetric(vertical: 20.0),
