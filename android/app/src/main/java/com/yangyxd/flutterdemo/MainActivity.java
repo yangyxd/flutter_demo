@@ -1,7 +1,6 @@
-package com.yangyxd.flutter.demo;
+package com.yangyxd.flutterdemo;
 
 import android.os.Bundle;
-
 import io.flutter.app.FlutterActivity;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 

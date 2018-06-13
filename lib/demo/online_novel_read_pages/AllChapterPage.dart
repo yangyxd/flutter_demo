@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'BookBeans.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
-import 'package:demo/utils/common.dart';
+import '../../utils/common.dart';
 import 'ReaderPage.dart';
 
 class AllChapterPage extends StatefulWidget {

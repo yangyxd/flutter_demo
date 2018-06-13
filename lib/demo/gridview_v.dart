@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
+import '../utils/common.dart';
 
 class GridViewDemo extends StatefulWidget {
     final String title;

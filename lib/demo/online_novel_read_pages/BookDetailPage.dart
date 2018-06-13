@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'package:html2md/html2md.dart' as html2md;
-import 'package:demo/utils/common.dart';
+import '../../utils/common.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'SavedBook.dart';
 import 'BookBeans.dart';

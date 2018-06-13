@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
+import '../../utils/common.dart';
 import 'package:html/parser.dart' as parse;
 import 'package:http/http.dart';
 import 'package:cached_network_image/cached_network_image.dart';

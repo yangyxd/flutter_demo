@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
+import '../utils/common.dart';
 
 class AnimatedListSample extends StatefulWidget {
 	final String title;

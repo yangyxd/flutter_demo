@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';  // 在 pubspec.yaml 中加入： transparent_image: ^0.1.0
 import 'package:cached_network_image/cached_network_image.dart'; // 在 pubspec.yaml 中加入： cached_network_image: "^0.4.0"
-import 'package:demo/utils/common.dart';
+import '../utils/common.dart';
 
 class NetImageDemo extends StatefulWidget {
   final String title;

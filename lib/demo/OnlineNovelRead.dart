@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
+import '../utils/common.dart';
 import 'online_novel_read_pages/HomePage.dart';
 import 'online_novel_read_pages/SavePage.dart';
 

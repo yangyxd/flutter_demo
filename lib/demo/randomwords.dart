@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:demo/utils/common.dart';
+import '../utils/common.dart';
 
 class RandomWords extends StatefulWidget {
   final String title;

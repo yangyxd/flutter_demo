@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
+import '../../utils/common.dart';
 import 'BookBeans.dart';
 import 'BookDetailPage.dart';
 import 'package:http/http.dart' as http;

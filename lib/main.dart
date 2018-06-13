@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:demo/utils/common.dart';
-import 'package:demo/demo/randomwords.dart';
-import 'package:demo/demo/netimage.dart';
-import 'package:demo/demo/listview_h.dart';
-import 'package:demo/demo/listview_tree.dart';
-import 'package:demo/demo/gridview_v.dart';
-import 'package:demo/demo/AnimatedList.dart';
-import 'package:demo/demo/ExpansionTile.dart';
-import 'package:demo/demo/TabbedAppBar.dart';
-import 'package:demo/demo/FadeAppTest.dart';
-import 'package:demo/demo/SignaturePainter.dart';
-import 'package:demo/demo/AsyncLoadListView.dart';
-import 'package:demo/demo/OnlineNovelRead.dart';
+import './utils/common.dart';
+import './demo/randomwords.dart';
+import './demo/netimage.dart';
+import './demo/listview_h.dart';
+import './demo/listview_tree.dart';
+import './demo/gridview_v.dart';
+import './demo/AnimatedList.dart';
+import './demo/ExpansionTile.dart';
+import './demo/TabbedAppBar.dart';
+import './demo/FadeAppTest.dart';
+import './demo/SignaturePainter.dart';
+import './demo/AsyncLoadListView.dart';
+import './demo/OnlineNovelRead.dart';
 
 
 void main() => runApp(new MyApp());

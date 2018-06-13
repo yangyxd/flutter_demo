@@ -4,7 +4,7 @@ import 'package:html/parser.dart' as parser;
 import 'package:http/http.dart' as http;
 import 'package:html2md/html2md.dart' as html2md;
 import 'BookBeans.dart';
-import 'package:demo/utils/common.dart';
+import '../../utils/common.dart';
 import 'AllChapterPage.dart';
 import 'SavedBook.dart';
 import 'dart:math';
