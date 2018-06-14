@@ -13,6 +13,8 @@ import './demo/SignaturePainter.dart';
 import './demo/AsyncLoadListView.dart';
 import './demo/OnlineNovelRead.dart';
 import './demo/AMapDemoSample.dart';
+import './demo/AnimatingWidgetAcrossDemo.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 
@@ -33,22 +35,44 @@ final demoNames = <String>[
     '异步加载列表',
     '-',
     '在线小说阅读',
-    '高德地图Demo'
+    '高德地图Demo',
+    '-',
+    '动画放大图像',
 ];
-
-//final List<Widget> demoWidgetClass = new List<Widget>.unmodifiable([
-//    NetImageDemo,
-//    ListViewHDemo,
-//    ListViewTreeDemo,
-//    GridViewDemo,
-//    AnimatedListSample,
-//    ExpansionTileSample,
-//]);
 
 class MyApp extends StatelessWidget {
 
+  Widget getWidget(BuildContext context, int i, String item) {
+    switch (i) {
+      case 1: return  new NetImageDemo(title: item);
+      case 2: return  new ListViewHDemo(title: item);
+      case 3: return  new ListViewTreeDemo(title: item);
+      case 4: return  new GridViewDemo(title: item);
+      case 5: return  new AnimatedListSample(title: item);
+      case 6: return  new ExpansionTileSample(title: item);
+      case 7: return  new TabbedAppBarSample(title: item);
+      case 8: return  new FadeAppTestSample(title: item);
+      case 9: return  new SignaturePainterSample(title: item);
+      case 10: return  new AsyncLoadListSample(title: item);
+
+      case 12: return  new OnlineNovelReadDemoSample(title: item);
+      case 13: return  new AMapDemoSample(title: item);
+
+      case 15: return  new AnimatingWidgetAcrossDemo(title: item);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final Map<String, WidgetBuilder> routes = new Map();
+    for (int i=0; i<demoNames.length; i++) {
+      String item = demoNames[i];
+      if (item == '-' || Tools.strIsEmpty(item))
+        continue;
+      routes["/$i"] = (BuildContext context) => getWidget(context, i, item);
+    }
+
     return new MaterialApp(
       title: 'App Title',
       theme: new ThemeData(
@@ -61,20 +85,22 @@ class MyApp extends StatelessWidget {
           //primarySwatch: Colors.blue,
           //cardColor: Colors.yellow,
       ),
-      routes: <String, WidgetBuilder>{
-        '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
-        '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
-        '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
-        '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
-        '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
-        '/6': (BuildContext context) => new ExpansionTileSample(title: demoNames[6]),
-        '/7': (BuildContext context) => new TabbedAppBarSample(title: demoNames[7]),
-        '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
-        '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
-        '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
-        '/12': (BuildContext context) => new OnlineNovelReadDemoSample(title: demoNames[12]),
-        '/13': (BuildContext context) => new AMapDemoSample(title: demoNames[13]),
-      },
+      routes: routes,
+//      routes: <String, WidgetBuilder>{
+//        '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
+//        '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
+//        '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
+//        '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
+//        '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
+//        '/6': (BuildContext context) => new ExpansionTileSample(title: demoNames[6]),
+//        '/7': (BuildContext context) => new TabbedAppBarSample(title: demoNames[7]),
+//        '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
+//        '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
+//        '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
+//        '/12': (BuildContext context) => new OnlineNovelReadDemoSample(title: demoNames[12]),
+//        '/13': (BuildContext context) => new AMapDemoSample(title: demoNames[13]),
+//        '/15': (BuildContext context) => new AMapDemoSample(title: demoNames[13]),
+//      },
       home: new MyHomePage(),
 
       localizationsDelegates: [
