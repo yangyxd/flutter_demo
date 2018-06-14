@@ -90,6 +90,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_amap:
+    dependency: "direct main"
+    description:
+      name: flutter_amap
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   flutter_cache_manager:
     dependency: transitive
     description:
@@ -158,6 +165,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.2"
+  image_jpeg:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: b8a697f1bdd77042d61e823c644db422dd2ae00b
+      url: "git://github.com/yangyxd/image_jpeg.git"
+    source: git
+    version: "0.0.1"
   io:
     dependency: transitive
     description:

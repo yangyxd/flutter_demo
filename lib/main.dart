@@ -12,6 +12,7 @@ import './demo/FadeAppTest.dart';
 import './demo/SignaturePainter.dart';
 import './demo/AsyncLoadListView.dart';
 import './demo/OnlineNovelRead.dart';
+import './demo/AMapDemoSample.dart';
 
 
 void main() => runApp(new MyApp());
@@ -29,7 +30,8 @@ final demoNames = <String>[
     '绘制画布Canvas',
     '异步加载列表',
     '-',
-    '在线小说阅读'
+    '在线小说阅读',
+    '高德地图Demo'
 ];
 
 //final List<Widget> demoWidgetClass = new List<Widget>.unmodifiable([
@@ -58,17 +60,18 @@ class MyApp extends StatelessWidget {
           //cardColor: Colors.yellow,
       ),
       routes: <String, WidgetBuilder>{
-          '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
-          '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
-          '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
-          '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
-          '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
-          '/6': (BuildContext context) => new ExpansionTileSample(title: demoNames[6]),
-          '/7': (BuildContext context) => new TabbedAppBarSample(title: demoNames[7]),
-          '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
-          '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
-          '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
-          '/12': (BuildContext context) => new OnlineNovelReadDemoSample(title: demoNames[12]),
+        '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
+        '/2': (BuildContext context) => new ListViewHDemo(title: demoNames[2]),
+        '/3': (BuildContext context) => new ListViewTreeDemo(title: demoNames[3]),
+        '/4': (BuildContext context) => new GridViewDemo(title: demoNames[4]),
+        '/5': (BuildContext context) => new AnimatedListSample(title: demoNames[5]),
+        '/6': (BuildContext context) => new ExpansionTileSample(title: demoNames[6]),
+        '/7': (BuildContext context) => new TabbedAppBarSample(title: demoNames[7]),
+        '/8': (BuildContext context) => new FadeAppTestSample(title: demoNames[8]),
+        '/9': (BuildContext context) => new SignaturePainterSample(title: demoNames[9]),
+        '/10': (BuildContext context) => new AsyncLoadListSample(title: demoNames[10]),
+        '/12': (BuildContext context) => new OnlineNovelReadDemoSample(title: demoNames[12]),
+        '/13': (BuildContext context) => new AMapDemoSample(title: demoNames[13]),
       },
       home: new MyHomePage(),
     );

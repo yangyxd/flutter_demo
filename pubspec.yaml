@@ -26,7 +26,12 @@ dependencies:
   http: ^0.11.3+16
 
   sqflite: "^0.8.8"
-  
+
+  flutter_amap: "^0.0.1"
+
+  image_jpeg:
+    git: git://github.com/yangyxd/image_jpeg.git
+
 
 dev_dependencies:
   flutter_test:
@@ -36,7 +41,6 @@ dev_dependencies:
     path: ./plugin/fluttertoast
   qr_reader:
     path: ./plugin/qr_reader
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
