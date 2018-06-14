@@ -26,6 +26,7 @@ dependencies:
   http: ^0.11.3+16
 
   sqflite: "^0.8.8"
+  
 
 dev_dependencies:
   flutter_test:

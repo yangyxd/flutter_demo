@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/utils/tools.dart';
 import './utils/common.dart';
 import './demo/randomwords.dart';
 import './demo/netimage.dart';
