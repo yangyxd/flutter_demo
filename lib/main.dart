@@ -13,6 +13,8 @@ import './demo/SignaturePainter.dart';
 import './demo/AsyncLoadListView.dart';
 import './demo/OnlineNovelRead.dart';
 import './demo/AMapDemoSample.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 
 void main() => runApp(new MyApp());
@@ -74,6 +76,15 @@ class MyApp extends StatelessWidget {
         '/13': (BuildContext context) => new AMapDemoSample(title: demoNames[13]),
       },
       home: new MyHomePage(),
+
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [  // 多语言本地化
+        const Locale('zh','CH'),
+        const Locale('en','US'),
+      ],
     );
   }
 

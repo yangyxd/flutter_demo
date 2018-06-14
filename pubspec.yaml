@@ -32,6 +32,9 @@ dependencies:
   image_jpeg:
     git: git://github.com/yangyxd/image_jpeg.git
 
+  flutter_localizations:
+    sdk: flutter
+
 
 dev_dependencies:
   flutter_test:
