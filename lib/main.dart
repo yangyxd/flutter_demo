@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './utils/common.dart';
 import './demo/randomwords.dart';
 import './demo/netimage.dart';
@@ -131,7 +132,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
     @override
-  Widget build(BuildContext context) => new Scaffold(
+  Widget build(BuildContext context) {
+    //SystemChrome.setSystemUIOverlayStyle(Styles.uiStyle);
+    return new Scaffold(
       appBar: new AppBar(
         title: new Text('Flutter Demo'),
         automaticallyImplyLeading: false,
@@ -184,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 };
             }
           ),
-  );
+  );}
 
   // 接收页面返回值 demo
   void _showRandowWords(BuildContext context, String _title) async {

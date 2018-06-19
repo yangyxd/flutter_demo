@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../utils/common.dart';
 
 class GridViewDemo extends StatefulWidget {
@@ -7,6 +8,8 @@ class GridViewDemo extends StatefulWidget {
 
   @override
   createState() => new GridViewDemoState(title);
+
+  bool showAppBar = true;
 }
 
 class GridViewDemoState extends State<GridViewDemo> {
@@ -15,19 +18,61 @@ class GridViewDemoState extends State<GridViewDemo> {
 
   @override
   Widget build(BuildContext context) {
+    //SystemChrome.setSystemUIOverlayStyle(Styles.uiStyle);
+
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(title), elevation: Styles.Elevation,
+      appBar: widget.showAppBar ?  new AppBar(
+        title: new Text(widget.title),
+      ) : null,
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Container(
+              color: Colors.yellow,
+              height: 80.0,
+              width: double.infinity,
+              child: new Row(
+                children: <Widget>[
+                  new Checkbox(value: widget.showAppBar, onChanged: (bool v) {
+                    setState(() {
+                      widget.showAppBar = v;
+                    });
+                  }),
+                  new Text("显示AppBar"),
+                ],
+              ),
+            ),
+            new Expanded(child: new Container(
+              child: new Row(
+                children: <Widget>[
+                  new Container(
+                    width: 60.0,
+                    color: Colors.blueAccent,
+                  ),
+                  new Expanded(child: new GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.8,
+                      mainAxisSpacing: 2.0,
+                      crossAxisSpacing: 2.0,
+                      padding: const EdgeInsets.all(2.0),
+                      children: new List.generate(20, (index) {
+                        return  new InkWell(
+                          child: new Container(
+                            color: Colors.black26,
+                            height: 60.0,
+                          ),
+                          onTap: () {},
+                        );
+                      })),
+                  )
+                ],
+              ),
+            ))
+          ],
         ),
-        body: new GridView.count(
-            crossAxisCount: 2,
-            children: new List.generate(100, (index) {
-              return new Center(
-                  child: new MyButton(
-                'Item $index',
-                style: Theme.of(context).textTheme.headline,
-              ));
-            })));
+      ),
+    );
   }
 }
 

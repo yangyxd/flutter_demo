@@ -1,11 +1,23 @@
 import 'font_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 export 'font_icons.dart';
 
 /**
  * 样式 by YangYxd
  */
 class Styles {
+
+
+	static SystemUiOverlayStyle uiStyle = const SystemUiOverlayStyle(
+		systemNavigationBarColor: const Color(0x00000000),
+		systemNavigationBarDividerColor: null,
+		statusBarColor: const Color(0x00000000),
+		systemNavigationBarIconBrightness: Brightness.dark,
+		statusBarIconBrightness: Brightness.dark,
+		statusBarBrightness: Brightness.dark,
+	);
+
 	/**
 	 * 默认 Elevation
 	 */
