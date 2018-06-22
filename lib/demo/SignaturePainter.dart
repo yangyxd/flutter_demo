@@ -36,8 +36,7 @@ class SignaturePainterSampleState extends State<SignaturePainterSample>  {
 				setState(() {
 					RenderBox referenceBox = context.findRenderObject();
 					Offset p = referenceBox.globalToLocal(details.globalPosition);
-					p = p.translate(0.0, -Tools.getSysStatsHeight(context));
-
+					p = p.translate(-4.0, -(Tools.getSysStatsHeight(context) + 4 + kToolbarHeight)); // 4 是上面的padding
 					_points = new List.from(_points)..add(p);
 				});
 			},

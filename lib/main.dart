@@ -15,6 +15,7 @@ import './demo/AsyncLoadListView.dart';
 import './demo/OnlineNovelRead.dart';
 import './demo/AMapDemoSample.dart';
 import './demo/AnimatingWidgetAcrossDemo.dart';
+import './demo/ButtonSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -39,6 +40,7 @@ final demoNames = <String>[
     '高德地图Demo',
     '-',
     '动画放大图像',
+    '按钮',
 ];
 
 class MyApp extends StatelessWidget {
@@ -60,6 +62,7 @@ class MyApp extends StatelessWidget {
       case 13: return  new AMapDemoSample(title: item);
 
       case 15: return  new AnimatingWidgetAcrossDemo(title: item);
+      case 16: return  new ButtonSample(title: item);
     }
     return null;
   }
