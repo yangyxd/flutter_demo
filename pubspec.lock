@@ -104,6 +104,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.1"
+  flutter_custom_tabs:
+    dependency: transitive
+    description:
+      name: flutter_custom_tabs
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
+  flutter_html_view:
+    dependency: "direct main"
+    description:
+      name: flutter_html_view
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.2"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -114,6 +128,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_webview_plugin:
+    dependency: "direct main"
+    description:
+      name: flutter_webview_plugin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.6"
   fluttertoast:
     dependency: "direct dev"
     description:
@@ -175,7 +196,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: b8a697f1bdd77042d61e823c644db422dd2ae00b
+      resolved-ref: "41a6516a103babff89e3b6602fe63fbb1bd8e3a9"
       url: "git://github.com/yangyxd/image_jpeg.git"
     source: git
     version: "0.0.1"
@@ -443,6 +464,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.5"
+  url_launcher:
+    dependency: transitive
+    description:
+      name: url_launcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   utf:
     dependency: transitive
     description:
@@ -464,6 +492,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.6"
+  video_player:
+    dependency: transitive
+    description:
+      name: video_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.4"
   vm_service_client:
     dependency: transitive
     description:
@@ -494,4 +529,4 @@ packages:
     version: "2.1.14"
 sdks:
   dart: ">=2.0.0-dev.62.0 <=2.0.0-dev.63.0.flutter-4c9689c1d2"
-  flutter: ">=0.1.4 <2.0.0"
+  flutter: ">=0.2.5 <2.0.0"

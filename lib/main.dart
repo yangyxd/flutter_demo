@@ -16,6 +16,8 @@ import './demo/OnlineNovelRead.dart';
 import './demo/AMapDemoSample.dart';
 import './demo/AnimatingWidgetAcrossDemo.dart';
 import './demo/ButtonSample.dart';
+import './demo/WebViewSample.dart';
+import './demo/HtmlViewSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -41,6 +43,9 @@ final demoNames = <String>[
     '-',
     '动画放大图像',
     '按钮',
+    '-',
+    '浏览器 WebView',
+    'html标签富文本',
 ];
 
 class MyApp extends StatelessWidget {
@@ -63,6 +68,9 @@ class MyApp extends StatelessWidget {
 
       case 15: return  new AnimatingWidgetAcrossDemo(title: item);
       case 16: return  new ButtonSample(title: item);
+
+      case 18: return new WebViewSample(title: item);
+      case 19: return new HtmlViewSample(title: item);
     }
     return null;
   }

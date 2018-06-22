@@ -28,6 +28,8 @@ dependencies:
   sqflite: "^0.8.8"
 
   flutter_amap: "^0.0.1"
+  flutter_webview_plugin: "^0.1.6"
+  flutter_html_view: "^0.5.2"
 
   image_jpeg:
     git: git://github.com/yangyxd/image_jpeg.git
