@@ -457,10 +457,12 @@ class _AnimatedFabState extends State<AnimatedFab> with SingleTickerProviderStat
     );
   }
 
+  static const _iconsSize = 26.0;
+
   Widget _buildOption(IconData icon, double angle) {
     double iconSize = 0.0;
     if (_animationController.value > 0.8) {
-      iconSize = 26.0 * (_animationController.value - 0.8) * 5;
+      iconSize = _iconsSize * (_animationController.value - 0.8) * 5;
     }
     return new Transform.rotate(
       angle: angle,
@@ -469,7 +471,7 @@ class _AnimatedFabState extends State<AnimatedFab> with SingleTickerProviderStat
         child: new Padding(
           padding: new EdgeInsets.only(top: 8.0),
           child: new IconButton(
-            onPressed: _onIconClick,
+            onPressed: (iconSize >= _iconsSize - 1) ? _onIconClick : null,
             icon: new Transform.rotate(
               angle: -angle,
               child: new Icon(
