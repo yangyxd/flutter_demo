@@ -18,6 +18,7 @@ import './demo/AnimatingWidgetAcrossDemo.dart';
 import './demo/ButtonSample.dart';
 import './demo/WebViewSample.dart';
 import './demo/HtmlViewSample.dart';
+import './demo/MenuUiChallengeSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -46,6 +47,7 @@ final demoNames = <String>[
     '-',
     '浏览器 WebView',
     'html标签富文本',
+    'Menu - Timeline'
 ];
 
 class MyApp extends StatelessWidget {
@@ -71,6 +73,7 @@ class MyApp extends StatelessWidget {
 
       case 18: return new WebViewSample(title: item);
       case 19: return new HtmlViewSample(title: item);
+      case 20: return new MenuUiChallengeSample();
     }
     return null;
   }
