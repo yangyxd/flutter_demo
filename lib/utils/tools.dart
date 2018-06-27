@@ -48,6 +48,16 @@ class Tools {
     Clipboard.setData(new ClipboardData(text: text));
   }
 
+  /// 隐藏软键盘
+  static void hideSoftKey() {
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
+  }
+
+  /// 显示软键盘
+  static void showSoftKey() {
+    SystemChannels.textInput.invokeMethod('TextInput.show');
+  }
+
   static const RollupSize_Units = ["GB", "MB", "KB", "B"];
   /** 返回文件大小字符串 */
   static String getRollupSize(int size) {
