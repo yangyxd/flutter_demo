@@ -123,6 +123,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_picker:
+    dependency: "direct main"
+    description:
+      name: flutter_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -191,6 +198,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.2"
+  image_carousel:
+    dependency: "direct main"
+    description:
+      name: image_carousel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
   image_jpeg:
     dependency: "direct main"
     description:
@@ -527,6 +541,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.14"
+  zoomable_image:
+    dependency: transitive
+    description:
+      name: zoomable_image
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.2"
 sdks:
   dart: ">=2.0.0-dev.62.0 <=2.0.0-dev.63.0.flutter-4c9689c1d2"
   flutter: ">=0.2.5 <2.0.0"

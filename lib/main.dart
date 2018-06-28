@@ -47,7 +47,7 @@ final demoNames = <String>[
     '-',
     '浏览器 WebView',
     'html标签富文本',
-    'Menu - Timeline'
+    'Menu - Timeline',
 ];
 
 class MyApp extends StatelessWidget {
