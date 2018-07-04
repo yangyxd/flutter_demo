@@ -51,7 +51,7 @@ class MenuUiChallengeSample extends StatefulWidget {
 }
 
 class MenuUiChallengeSampleState extends State<MenuUiChallengeSample> {
-  static const double _imageHeight = 256.0;
+  static const double _imageHeight = 210.0;
   final GlobalKey<AnimatedListState> _listKey =
       new GlobalKey<AnimatedListState>();
   ListModel listModel;
@@ -84,8 +84,9 @@ class MenuUiChallengeSampleState extends State<MenuUiChallengeSample> {
       clipper: new DialogonalClipper(),
       child: new Image.asset(
         'assets/images/birds.jpg',
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.fill,
         height: _imageHeight,
+        width: double.infinity,
         colorBlendMode: BlendMode.srcOver,
         color: const Color(0xa5140a28),
       ),
