@@ -194,7 +194,7 @@ const List<String> _ImgList = [
   'https://img14.360buyimg.com/n0/jfs/t3811/293/2707574404/256051/aed5ef7/5864ab62N9a3bcb0d.jpg',
   'https://img10.360buyimg.com/n2/jfs/t22327/332/1073634739/498315/6ea17ed4/5b1f378dN6683d2ec.jpg',
   'https://img12.360buyimg.com/n2/jfs/t4159/21/2659690871/765919/ee4ca7eb/58d4cb03Naa9567f4.jpg',
-]
+];
 
 class ShopPage {
   final String title;
