@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/utils/styles.dart';
+import 'package:flutter/src/material/constants.dart';
+import 'package:flutter/src/foundation/platform.dart';
+import 'dart:math' as math;
 
 class Choice {
 	Choice({ this.title, this.icon, this.id, this.selected = false });
@@ -378,3 +381,37 @@ class _EditListItemState extends State<EditListItem> {
 		return widget.buildWidget(context, _focusNode);
 	}
 }
+
+/// 支持设置大小和背景色的 Bar
+class SizedBar extends StatefulWidget implements PreferredSizeWidget {
+	final PreferredSizeWidget child;
+	final Color color;
+	final double width, height;
+	final BoxConstraints constraints;
+	final Decoration decoration;
+
+	SizedBar({Key key, this.color, this.width, this.height, this.constraints, this.decoration, this.child}): super(key: key);
+
+	@override
+	State<StatefulWidget> createState() => new SizedBarState();
+
+	@override
+	Size get preferredSize {
+		return child.preferredSize;
+	}
+}
+
+class SizedBarState extends State<SizedBar> {
+	@override
+	Widget build(BuildContext context) {
+		return Container(
+			color: widget.color,
+			width: widget.width,
+			height: widget.height,
+			constraints: widget.constraints,
+			decoration: widget.decoration,
+			child: widget.child,
+		);
+	}
+}
+

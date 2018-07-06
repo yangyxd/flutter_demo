@@ -115,8 +115,9 @@ class PageView extends StatelessWidget {
                children: <Widget>[
                  Align(
                    child: Container(
-                     color: Colors.black12,
-                     child: new CachedNetworkImage(
+                     color: Colors.white70,
+                     //child: Image.network(_ImgList[index % _ImgList.length]),
+                     child: CachedNetworkImage(
                        imageUrl: _ImgList[index % _ImgList.length],
                        fit: BoxFit.contain,
                        height: imgH, width: double.infinity,

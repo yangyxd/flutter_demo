@@ -19,7 +19,7 @@ dependencies:
 
   english_words: ^3.1.0
   transparent_image: ^0.1.0
-  cached_network_image: "^0.4.0"
+  cached_network_image: "^0.4.1+1"
 
   html: ^0.13.3
   html2md: "^0.1.7"
