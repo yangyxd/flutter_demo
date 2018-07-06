@@ -52,6 +52,8 @@
         </activity>
 
         <!-- 高德地图相关 -->
+        <!--
         <activity android:name="com.jzoom.flutteramap.AMapActivity" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        -->
     </application>
 </manifest>

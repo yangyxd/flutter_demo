@@ -1,12 +1,9 @@
-import 'package:flutter_amap/flutter_amap.dart';
 import 'package:flutter/material.dart';
 import '../utils/common.dart';
 
 class AnimatingWidgetAcrossDemo extends StatefulWidget {
   final String title;
   AnimatingWidgetAcrossDemo({this.title});
-
-  final FlutterAmap amap = new FlutterAmap();
 
   @override
   createState() => new _SampleState();
@@ -64,6 +61,7 @@ class _SampleState extends State<AnimatingWidgetAcrossDemo> {
 class DetailScreen extends StatelessWidget {
   DetailScreen(this.url, this.tag);
   final String url, tag;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

@@ -27,7 +27,7 @@ dependencies:
 
   sqflite: "^0.8.8"
 
-  flutter_amap: "^0.0.1"
+  # flutter_amap: "^0.0.1" # 隐藏高德地图demo， 放到了
   flutter_webview_plugin: "^0.1.6"
   flutter_html_view: "^0.5.2"
 

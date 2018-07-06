@@ -92,10 +92,14 @@ class AnimateScrollSampleState extends State<AnimateScrollSample>
 
   _buildFlexibleSpace() {
     return FlexibleSpaceBar(
-      title: Container(
-        child:
-            Text("风云", style: TextStyle(color: Colors.white.withOpacity(_t))),
-        margin: EdgeInsets.only(bottom: 46.0), // 46是默认的TabBar高度
+//      title: Container(
+//        child:
+//            Text("风云", style: TextStyle(color: Colors.white.withOpacity(_t))),
+//        margin: EdgeInsets.only(bottom: 46.0), // 46是默认的TabBar高度
+//      ),
+      title: Transform(
+        transform: new Matrix4.translationValues(0.0, -46.0, 0.0),
+        child: Text("风云", style: TextStyle(color: Colors.white.withOpacity(_t))), // 46是默认的TabBar高度
       ),
       background: Container(
           color: Colors.white,

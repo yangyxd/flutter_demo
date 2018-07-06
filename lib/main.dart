@@ -13,7 +13,7 @@ import './demo/FadeAppTest.dart';
 import './demo/SignaturePainter.dart';
 import './demo/AsyncLoadListView.dart';
 import './demo/OnlineNovelRead.dart';
-import './demo/AMapDemoSample.dart';
+//import './demo/AMapDemoSample.dart';
 import './demo/AnimatingWidgetAcrossDemo.dart';
 import './demo/ButtonSample.dart';
 import './demo/WebViewSample.dart';
@@ -21,6 +21,7 @@ import './demo/HtmlViewSample.dart';
 import './demo/MenuUiChallengeSample.dart';
 import './demo/ShopGridSample.dart';
 import './demo/AnimateScrollSample.dart';
+import './demo/AnimateParallaxSwitchSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -40,7 +41,7 @@ final demoNames = <String>[
   '异步加载列表',
   '-',
   '在线小说阅读',
-  '高德地图Demo',
+  '-', //'''高德地图Demo',
   '-',
   '动画放大图像',
   '按钮',
@@ -50,6 +51,7 @@ final demoNames = <String>[
   'Menu - Timeline',
   '商品展示',
   '动画控制示例',
+  '视差轮播动效',
 ];
 
 class MyApp extends StatelessWidget {
@@ -78,9 +80,9 @@ class MyApp extends StatelessWidget {
 
       case 12:
         return new OnlineNovelReadDemoSample(title: item);
-      case 13:
-        return new AMapDemoSample(title: item);
-
+//      case 13:
+//        return new AMapDemoSample(title: item);
+//
       case 15:
         return new AnimatingWidgetAcrossDemo(title: item);
       case 16:
@@ -96,6 +98,8 @@ class MyApp extends StatelessWidget {
         return new ShopGridSample();
       case 22:
         return new AnimateScrollSample();
+      case 23:
+        return new AnimateParallaxSwitchSample(title: item);
     }
     return null;
   }
