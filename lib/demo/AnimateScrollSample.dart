@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import '../utils/view/CommonView.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 /// 动画滚动示例
 class AnimateScrollSample extends StatefulWidget {
@@ -44,7 +45,7 @@ class AnimateScrollSampleState extends State<AnimateScrollSample>
               floating: false,
               snap: false,
               actions: <Widget>[
-                IconButton(icon: Icon(Icons.share, color: Colors.white))
+                IconButton(icon: Icon(Icons.share, color: Colors.white), onPressed: () {})
               ],
               flexibleSpace: _buildFlexibleSpace(),
               bottom: SizedBar(
@@ -79,8 +80,8 @@ class AnimateScrollSampleState extends State<AnimateScrollSample>
       ScrollUpdateNotification n = notification;
       if (n.depth == 0) {
         setState(() {
-          _t = min(n.metrics.pixels, n.metrics.maxScrollExtent * 0.5) /
-              (n.metrics.maxScrollExtent * 0.5);
+          _t = min(n.metrics.pixels, n.metrics.maxScrollExtent * 0.6) /
+              (n.metrics.maxScrollExtent * 0.6);
         });
       }
     }
@@ -101,13 +102,14 @@ class AnimateScrollSampleState extends State<AnimateScrollSample>
           height: 300.0,
           child: Stack(
             children: <Widget>[
-              Image.network(
-                  "http://www.fpwap.com/UploadFiles02/news/sub/2017/10/25/1508906814806210.jpg",
+              CachedNetworkImage(
+                  imageUrl: "http://www.fpwap.com/UploadFiles02/news/sub/2017/10/25/1508906814806210.jpg",
                   height: 158.0,
                   width: double.infinity,
                   fit: BoxFit.fitWidth,
-                  colorBlendMode: BlendMode.srcOver,
-                  color: Colors.black54),
+                  //colorBlendMode: BlendMode.srcOver,
+                  //color: Colors.black54
+              ),
               Container(
                 margin: EdgeInsets.only(left: 8.0, top: 100.0),
                 child: Column(

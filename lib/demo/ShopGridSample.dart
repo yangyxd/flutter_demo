@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ShopGridSample extends StatefulWidget {
   @override
@@ -46,9 +46,43 @@ class ShopGridSampleState extends State<ShopGridSample> {
   }
 }
 
-class PageView extends StatelessWidget {
+class PageView extends StatefulWidget {
   final ShopPage data;
   PageView({Key key, this.data}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => new PageViewState(data: this.data);
+}
+
+class PageViewState extends State<PageView> {
+  final ShopPage data;
+  PageViewState({this.data});
+
+  final List<String> _ImgList = [
+    ('https://img14.360buyimg.com/n0/jfs/t4015/38/1245010189/278921/a425cd20/586dd8e8N0b698bc0.jpg'),
+    ( 'https://img14.360buyimg.com/n0/jfs/t12901/89/957816754/402216/89589deb/5a1773ebN25b728eb.jpg'),
+    ('https://img14.360buyimg.com/n0/jfs/t3811/293/2707574404/256051/aed5ef7/5864ab62N9a3bcb0d.jpg'),
+    ('https://img10.360buyimg.com/n2/jfs/t22327/332/1073634739/498315/6ea17ed4/5b1f378dN6683d2ec.jpg'),
+    ( 'https://img12.360buyimg.com/n2/jfs/t4159/21/2659690871/765919/ee4ca7eb/58d4cb03Naa9567f4.jpg'),
+  ];
+
+  List<Widget> imgViews = [];
+
+  @override
+  void initState() {
+    super.initState();
+    imgViews.length = _ImgList.length;
+
+    for (int i=0; i<_ImgList.length; i++) {
+      imgViews[i] = new FadeInImage.memoryNetwork(
+        image: _ImgList[i],
+        fit: BoxFit.contain,
+        height: imgH,
+        placeholder: kTransparentImage,
+        width: double.infinity,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,36 +129,32 @@ class PageView extends StatelessWidget {
     );
   }
 
-  Widget _buildShopGrid() {
-    const double imgH = 165.0;
-    const Color cRed = Color(0xffe20000);
+  final double imgH = 165.0;
+  final Color cRed = Color(0xffe20000);
 
+  Widget _buildShopGrid() {
     return new SliverGrid(
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200.0,
-        mainAxisSpacing: 6.0,
+        mainAxisSpacing: 4.0,
         crossAxisSpacing: 4.0,
         childAspectRatio: 200 / 265,
       ),
       delegate: new SliverChildBuilderDelegate(
          (BuildContext context, int index) {
+
+           int vi = index % _ImgList.length;
+
            return new Container(
              color: Color(0xffe2e2e2),
              child: new Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: <Widget>[
-                 Align(
-                   child: Container(
-                     color: Colors.white70,
-                     //child: Image.network(_ImgList[index % _ImgList.length]),
-                     child: CachedNetworkImage(
-                       imageUrl: _ImgList[index % _ImgList.length],
-                       fit: BoxFit.contain,
-                       height: imgH, width: double.infinity,
-                     ),
-                   ),
+                 new Container(
+                   color: Colors.white,
+                   child: imgViews[vi],
                  ),
-                 Padding(padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0), child: Text("商品标题", overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.w300))),
+                 Padding(padding: EdgeInsets.fromLTRB(4.0, 0.0, 4.0, 0.0), child: Text("商品标题 $index", overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.w300))),
 
                  Row(
                    children: <Widget>[
@@ -183,19 +213,13 @@ class PageView extends StatelessWidget {
              )
            );
          },
-         childCount: 20,
+         childCount: 51,
+         addAutomaticKeepAlives: true,
+         addRepaintBoundaries: true,
        ),
     );
   }
 }
-
-const List<String> _ImgList = [
-  'https://img14.360buyimg.com/n0/jfs/t4015/38/1245010189/278921/a425cd20/586dd8e8N0b698bc0.jpg',
-  'https://img14.360buyimg.com/n0/jfs/t12901/89/957816754/402216/89589deb/5a1773ebN25b728eb.jpg',
-  'https://img14.360buyimg.com/n0/jfs/t3811/293/2707574404/256051/aed5ef7/5864ab62N9a3bcb0d.jpg',
-  'https://img10.360buyimg.com/n2/jfs/t22327/332/1073634739/498315/6ea17ed4/5b1f378dN6683d2ec.jpg',
-  'https://img12.360buyimg.com/n2/jfs/t4159/21/2659690871/765919/ee4ca7eb/58d4cb03Naa9567f4.jpg',
-];
 
 class ShopPage {
   final String title;
