@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Movie {
   Movie({
@@ -81,12 +82,43 @@ class MoiveDetailsSample extends StatefulWidget {
 }
 
 class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
+  double opacity = 0.0;
 
   @override
   Widget build(BuildContext context) {
+    var topHeight = kToolbarHeight + MediaQuery.of(context).padding.top;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
+      body: Stack(
+        children: <Widget>[
+          NotificationListener(
+            child: _buildBodyScrolView(),
+            onNotification: ((ScrollUpdateNotification n) {
+              if (n.metrics.pixels <= 200.0) {
+                setState(() {
+                  opacity = min(n.metrics.pixels, 100.0) / 100.0;
+                });
+              }
+              //(n.metrics.pixels, n.metrics.maxScrollExtent
+              return true;
+            }),
+          ),
+          Container(
+            child: AppBar(
+              title: Text("Moive Details"),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+            ),
+            color: Colors.green.withOpacity(opacity),
+            height: topHeight,
+          )
+        ],
+      ),
+    );
+  }
+
+  _buildBodyScrolView() {
+    return CustomScrollView(
+      slivers: <Widget>[
 //          SliverAppBar(
 //            title: Text("Moive Details"),
 //            floating: true,
@@ -94,30 +126,28 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
 //            backgroundColor: Colors.transparent,
 //            elevation: 0.0,
 //          ),
-          SliverToBoxAdapter(
-            child: Container(
-              child: _buildBody(),
-              height: 320.0,
-            ),
+        SliverToBoxAdapter(
+          child: Container(
+            child: _buildBody(),
+            height: 320.0,
           ),
-          SliverToBoxAdapter(
-            child: _builStoryline(),
-          )
-        ],
-      ),
+        ),
+        SliverToBoxAdapter(
+          child: _builStoryline(),
+        )
+      ],
     );
   }
 
-  _buildBody(){
-    var topHeight = kToolbarHeight + MediaQuery.of(context).padding.top;
+  _buildBody() {
     return Stack(
       children: <Widget>[
         ArcBannerImage(movie.bannerUrl, height: 200.0),
-        AppBar(
-          title: Text("Moive Details"),
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-        ),
+//        AppBar(
+//          title: Text("Moive Details"),
+//          backgroundColor: Colors.transparent,
+//          elevation: 0.0,
+//        ),
         _buildMovieImage(),
       ],
     );
@@ -146,7 +176,11 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(movie.title, style: textTheme.title, overflow: TextOverflow.ellipsis,),
+        Text(
+          movie.title,
+          style: textTheme.title,
+          overflow: TextOverflow.ellipsis,
+        ),
         SizedBox(height: 8.0),
         _buildRatingInformation(),
         SizedBox(height: 12.0),
@@ -253,16 +287,20 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
           SizedBox(height: 8.0),
           Text("Story line", style: textTheme.subhead.copyWith(fontSize: 18.0)),
           SizedBox(height: 8.0),
-          Text(movie.storyline, style: textTheme.body1.copyWith(
-            color: Colors.black45,
-            fontSize: 16.0,
-          )),
+          Text(movie.storyline,
+              style: textTheme.body1.copyWith(
+                color: Colors.black45,
+                fontSize: 16.0,
+              )),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text('more', style: textTheme.body1.copyWith(fontSize: 16.0, color: theme.accentColor)),
-              Icon(Icons.keyboard_arrow_down, size: 18.0, color: theme.accentColor),
+              Text('more',
+                  style: textTheme.body1
+                      .copyWith(fontSize: 16.0, color: theme.accentColor)),
+              Icon(Icons.keyboard_arrow_down,
+                  size: 18.0, color: theme.accentColor),
             ],
           ),
 
@@ -271,7 +309,7 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
           SizedBox(height: 8.0),
           SizedBox.fromSize(
             size: const Size.fromHeight(100.0),
-            child: ListView.builder (
+            child: ListView.builder(
               itemCount: photoUrls.length,
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.only(top: 8.0),
@@ -294,7 +332,6 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
               itemBuilder: _buildActor,
             ),
           ),
-
         ],
       ),
     );
@@ -335,7 +372,6 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
       ),
     );
   }
-
 }
 
 class ArcBannerImage extends StatelessWidget {
