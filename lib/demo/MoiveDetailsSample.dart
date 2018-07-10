@@ -93,7 +93,7 @@ class MoiveDetailsSampleState extends State<MoiveDetailsSample> {
           NotificationListener(
             child: _buildBodyScrolView(),
             onNotification: ((ScrollUpdateNotification n) {
-              if (n.metrics.pixels <= 200.0) {
+              if (n.depth == 0 && n.metrics.pixels <= 200.0) {
                 setState(() {
                   opacity = min(n.metrics.pixels, 100.0) / 100.0;
                 });
