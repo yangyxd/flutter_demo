@@ -23,6 +23,7 @@ import './demo/ShopGridSample.dart';
 import './demo/AnimateScrollSample.dart';
 import './demo/AnimateParallaxSwitchSample.dart';
 import './demo/MoiveDetailsSample.dart';
+import './demo/ImageListSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -54,6 +55,7 @@ final demoNames = <String>[
   '动画控制示例',
   '视差轮播动效',
   '电影详情页面',
+  '图片测试列表',
 ];
 
 class MyApp extends StatelessWidget {
@@ -104,6 +106,8 @@ class MyApp extends StatelessWidget {
         return new AnimateParallaxSwitchSample(title: item);
       case 24:
         return new MoiveDetailsSample();
+      case 25:
+        return new ImageListSample();
     }
     return null;
   }
