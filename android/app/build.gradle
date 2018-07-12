@@ -39,6 +39,11 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+//        multiDexEnabled true
+//        ndk {
+//            abiFilters "armeabi", "x86", "x86_64", "armeabi-v7a"  //兼容x86cpu架构  需要什么样的架构就添加什么样的
+//        }
     }
 
     // 解决 native libraries 不支持cpu的体系结构。允许模拟器调试

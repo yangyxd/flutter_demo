@@ -43,7 +43,7 @@ class ImageListSampleState extends State<ImageListSample> {
           itemBuilder: ((BuildContext context, int index) {
             var _url = imageList[index % imageList.length] + "?t=${DateTime.now().millisecondsSinceEpoch}";
             return new Container(
-              height: 200.0,
+              height: 230.0,
               padding: const EdgeInsets.all(8.0),
               child:  new CachedNetworkImage(
                 //placeholder: new CircularProgressIndicator(),
