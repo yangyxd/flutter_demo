@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../utils/common.dart';
 import 'package:http/http.dart' as http;
@@ -42,7 +41,7 @@ class AsyncLoadListSampleState extends State<AsyncLoadListSample> {
 		String dataURL = "https://jsonplaceholder.typicode.com/posts";
 		http.Response response = await http.get(dataURL);
 		setState(() {
-			widgets = JSON.decode(response.body);
+			widgets = jsonDecode(response.body);
 		});
 	}
 
