@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_custom_tabs-0.3.0/android/flutter_custom_tabs.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_custom_tabs-0.3.0/android/flutter_custom_tabs.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_picker-0.0.6/android/flutter_picker.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_picker-0.0.6/android/flutter_picker.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.2.1+2/android/flutter_webview_plugin.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/flutter_webview_plugin-0.2.1+2/android/flutter_webview_plugin.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/fluttertoast-2.0.7/android/fluttertoast.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/fluttertoast-2.0.7/android/fluttertoast.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/git/image_jpeg-755eb74e5f76f2ea1bf8851a5c194743ef5e084e/android/image_jpeg.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/git/image_jpeg-755eb74e5f76f2ea1bf8851a5c194743ef5e084e/android/image_jpeg.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/path_provider-0.4.1/android/path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../plugin/qr_reader/android/qr_reader.iml" filepath="$PROJECT_DIR$/../plugin/qr_reader/android/qr_reader.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/shared_preferences-0.4.2/android/shared_preferences.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/shared_preferences-0.4.2/android/shared_preferences.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/sqflite-0.11.2+2/android/sqflite.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/sqflite-0.11.2+2/android/sqflite.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/url_launcher-3.0.2/android/url_launcher.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/url_launcher-3.0.2/android/url_launcher.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/video_player-0.6.5/android/video_player.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/video_player-0.6.5/android/video_player.iml" />
+    </modules>
+  </component>
+</project>
