@@ -51,10 +51,13 @@ class NetImageDemoState extends State<NetImageDemo> {
 //                ),
                 background: new CarouselSlider(
                   items: <Widget>[
-                    Image(image: imgs[0]),
-                    Image(image: imgs[1]),
-                    Image(image: imgs[2]),
+                    Image(image: imgs[0], fit: BoxFit.cover, width: double.infinity, height: double.infinity),
+                    Image(image: imgs[1], fit: BoxFit.cover, width: double.infinity, height: double.infinity),
+                    Image(image: imgs[2], fit: BoxFit.cover, width: double.infinity, height: double.infinity),
                   ],
+                  autoPlay: true,
+                  viewportFraction: 1.0,
+                  aspectRatio: 1.0,
                 ),
               ),
               backgroundColor: Colors.blue,
