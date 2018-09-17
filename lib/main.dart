@@ -24,10 +24,16 @@ import './demo/AnimateScrollSample.dart';
 import './demo/AnimateParallaxSwitchSample.dart';
 import './demo/MoiveDetailsSample.dart';
 import './demo/ImageListSample.dart';
+import './demo/BMICalculatorSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() => runApp(new MyApp());
+void main()  {
+  // 屏幕只能垂直
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown])
+      .then((_) => runApp(new MyApp()));
+}
 
 final demoNames = <String>[
   '无限滚动列表',
@@ -56,6 +62,7 @@ final demoNames = <String>[
   '视差轮播动效',
   '电影详情页面',
   '图片测试列表',
+  'BMI Calculator',
 ];
 
 class MyApp extends StatelessWidget {
@@ -108,6 +115,8 @@ class MyApp extends StatelessWidget {
         return new MoiveDetailsSample();
       case 25:
         return new ImageListSample();
+      case 26:
+        return new BMICalculatorSample();
     }
     return null;
   }

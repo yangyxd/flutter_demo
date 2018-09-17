@@ -35,6 +35,7 @@ dependencies:
   carousel_slider: ^0.0.7
 
   fluttertoast: ^2.0.7
+  flutter_svg: ^0.5.5+1
 
   image_jpeg:
     git: git://github.com/yangyxd/image_jpeg.git
@@ -80,6 +81,13 @@ flutter:
     - assets/images/jenny.png
     - assets/images/kevin.png
     - assets/images/louis.png
+
+    - assets/bmi/images/gender_arrow.svg
+    - assets/bmi/images/gender_female.svg
+    - assets/bmi/images/gender_male.svg
+    - assets/bmi/images/gender_other.svg
+    - assets/bmi/images/person.svg
+    - assets/bmi/images/weight_arrow.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
