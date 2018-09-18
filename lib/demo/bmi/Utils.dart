@@ -27,3 +27,29 @@ const Map<Gender, String> genderName = {
 
 /// 计算圆的大小
 double circleSize(BuildContext context) => screenAwareSize(80.0, context);
+
+/// 绝对值
+double abs(double v) {
+  if (v >= 0) return v;
+  return -v;
+}
+
+const double heightCircleSize = 32.0;
+const double marginBottom = 16.0;
+const double marginTop = 26.0;
+const double labelsFontSize = 13.0;
+const Color labelsGrey = const Color.fromRGBO(216, 217, 223, 1.0);
+const double selectedLabelFontSize = 14.0;
+
+/// 身高刻度文本字体
+const TextStyle labelsTextStyle = const TextStyle(
+  color: labelsGrey,
+  fontSize: labelsFontSize,
+);
+
+double marginBottomAdapted(BuildContext context) => screenAwareSize(marginBottom, context);
+double marginTopAdapted(BuildContext context) => screenAwareSize(marginTop, context);
+
+
+double circleSizeAdapted(BuildContext context) =>
+    screenAwareSize(heightCircleSize, context);

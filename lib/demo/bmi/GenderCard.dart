@@ -3,6 +3,7 @@ import 'CardTitle.dart';
 import 'Utils.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+/// 性别卡片部件
 class GenderCard extends StatefulWidget {
   final Gender initalGender;
   const GenderCard({Key key, this.initalGender}) : super(key: key);
@@ -48,7 +49,7 @@ class _GenderCardState extends State<GenderCard> with SingleTickerProviderStateM
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              CardTitle("性别: ${genderName[selectedGender]}"),  // GENDER
+              CardTitle("性别", subtitle: " ${genderName[selectedGender]}"),  // GENDER
               Padding(
                 padding: EdgeInsets.only(top: screenAwareSize(16.0, context)),
                 child: _drawMainStack(),

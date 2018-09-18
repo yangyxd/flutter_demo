@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'CardTitle.dart';
 import 'Utils.dart';
 import 'GenderCard.dart';
+import 'WeightCard.dart';
+import 'HeightCard.dart';
 
 class InputPage extends StatelessWidget {
 
@@ -60,11 +62,11 @@ class InputPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Expanded(child: GenderCard()),
-                Expanded(child: _tempCard("Weight")),
+                Expanded(child: WeightCard()),
               ],
             ),
           ),
-          Expanded(child: _tempCard("Height"))
+          Expanded(child: HeightCard())
         ],
       ),
     );
