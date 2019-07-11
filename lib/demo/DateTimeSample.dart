@@ -72,6 +72,8 @@ class _DatetimeSampleState extends State<DatetimeSample> {
                   ),
                   suffixText: "天后是 ${t2 == null ? "" : Tools.dateToStr(t2)}",
                   prefixText: "的  ",
+                  suffixStyle: TextStyle(fontSize: 12.0),
+                  prefixStyle: TextStyle(fontSize: 12.0),
                   contentPadding: EdgeInsets.fromLTRB(12.0, 8.0, 8.0, 4.0),
                 ),
                 onSubmitted: (v) {
