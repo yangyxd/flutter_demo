@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html_view/flutter_html_view.dart';
+import 'package:flutter_html/flutter_html.dart';
 import '../utils/common.dart';
 import 'dart:async';
 
@@ -27,7 +27,7 @@ class HtmlViewSampleState extends State<HtmlViewSample> {
       ),
       body: new SingleChildScrollView(
         child: new Center(
-          child: new HtmlView(data: html),
+          child: new Html(data: html),
         ),
       ),
     );

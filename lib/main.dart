@@ -75,6 +75,50 @@ final demoNames = <DemoItem>[
 ];
 
 class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'App Title',
+      theme: new ThemeData(
+        primaryColor: const Color(0xFFfffff8), // 标题工具栏主题颜色
+        //primaryColorLight: Colors.yellow,
+        //splashColor: Colors.grey,  // 水波颜色
+        //dividerColor: Colors.black,
+        //scaffoldBackgroundColor: Colors.white,
+        //primaryColorDark: Colors.red,
+        //primarySwatch: Colors.blue,
+        //cardColor: Colors.yellow,
+      ),
+      home: new MyHomePage(),
+      routes: <String, WidgetBuilder>{
+        "/id22": (context) => new BMICalculatorSample(),
+      },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        // 多语言本地化
+        const Locale('zh', 'CH'),
+        const Locale('en', 'US'),
+      ],
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  createState() => new _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  void _select(Choice choice) {
+    setState(() {
+      // Causes the app to rebuild with the new _selectedChoice.
+      Tools.toast(choice.title);
+    });
+  }
+
   Widget getWidget(BuildContext context, int id, String item) {
     switch (id) {
       case 1:
@@ -133,59 +177,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, WidgetBuilder> routes = new Map();
-    for (int i = 0; i < demoNames.length; i++) {
-      DemoItem item = demoNames[i];
-      if (!item.visible || item.name == '-' || Tools.strIsEmpty(item.name)) continue;
-      routes["/$i"] = (BuildContext context) => getWidget(context, item.id, item.name);
-    }
-
-    return new MaterialApp(
-      title: 'App Title',
-      theme: new ThemeData(
-        primaryColor: const Color(0xFFfffff8), // 标题工具栏主题颜色
-        //primaryColorLight: Colors.yellow,
-        //splashColor: Colors.grey,  // 水波颜色
-        //dividerColor: Colors.black,
-        //scaffoldBackgroundColor: Colors.white,
-        //primaryColorDark: Colors.red,
-        //primarySwatch: Colors.blue,
-        //cardColor: Colors.yellow,
-      ),
-      routes: routes,
-//      routes: <String, WidgetBuilder>{
-//        '/1': (BuildContext context) => new NetImageDemo(title: demoNames[1]),
-//      },
-      home: new MyHomePage(),
-
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        // 多语言本地化
-        const Locale('zh', 'CH'),
-        const Locale('en', 'US'),
-      ],
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  createState() => new _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  void _select(Choice choice) {
-    setState(() {
-      // Causes the app to rebuild with the new _selectedChoice.
-      Tools.toast(choice.title);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     //SystemChrome.setSystemUIOverlayStyle(Styles.uiStyle);
     return new Scaffold(
       appBar: new AppBar(
@@ -233,10 +224,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onTap: () {
-                  if (index == 0)
+                  if (item.id == 0)
                     _showRandowWords(context, item.name);
-                  else
-                    Navigator.pushNamed(context, '/$index'); // 使用命名导航
+                  else if (item.id == 22) {
+                    Navigator.pushNamed(context, "/id22");
+                  } else {
+                    var p = getWidget(context, item.id, item.name);
+                    if (p != null)
+                      Tools.startPage(context, p);
+                  }
                 },
               );
             }

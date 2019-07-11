@@ -78,8 +78,10 @@ class NetImageDemoState extends State<NetImageDemo> {
                     new Image.network('http://img.zcool.cn/community/01b1b3590877caa8012145507aec92.gif',),
                     new Text('使用缓存图片'),
                     new CachedNetworkImage(
-                      placeholder: new LinearProgressIndicator(),
                       //placeholder: new RefreshProgressIndicator(),
+                      placeholder:  ((context, url) {
+                        return LinearProgressIndicator();
+                      }),
                       imageUrl: 'https://github.com/flutter/website/blob/master/_includes/code/layout/lakes/images/lake.jpg?raw=true',
                     ),
                   ],
