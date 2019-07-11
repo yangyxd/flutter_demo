@@ -345,6 +345,12 @@ class Tools {
     }
   }
 
+  /// 返回指定日期偏移指定天数后的日期
+  static DateTime dateOffset(DateTime value, int offsetDays) {
+    int v = value.millisecondsSinceEpoch + (offsetDays * 86400000);
+    return DateTime.fromMicrosecondsSinceEpoch(v);
+  }
+
   /** 获取屏幕宽度 */
   static double getScreenWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;

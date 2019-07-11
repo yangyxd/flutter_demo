@@ -25,6 +25,7 @@ import './demo/AnimateParallaxSwitchSample.dart';
 import './demo/MoiveDetailsSample.dart';
 import './demo/ImageListSample.dart';
 import './demo/BMICalculatorSample.dart';
+import './demo/DateTimeSample.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -35,39 +36,47 @@ void main()  {
       .then((_) => runApp(new MyApp()));
 }
 
-final demoNames = <String>[
-  '无限滚动列表',
-  '显示网上的图片',
-  '水平(ListView)',
-  '不同类型的子项',
-  '格子列表(GridList)',
-  '卡片列表(AnimatedList)',
-  '多级列表(ExpansionTile)',
-  '选项卡式AppBar',
-  '动画示例',
-  '绘制画布Canvas',
-  '异步加载列表',
-  '-',
-  '在线小说阅读',
-  '-', //'''高德地图Demo',
-  '-',
-  '动画放大图像',
-  '按钮',
-  '-',
-  '浏览器 WebView',
-  'html标签富文本',
-  'Menu - Timeline',
-  '商品展示',
-  '动画控制示例',
-  '视差轮播动效',
-  '电影详情页面',
-  '图片测试列表',
-  'BMI Calculator',
+class DemoItem {
+  final String name;
+  final int id;
+  final bool visible;
+  const DemoItem(this.name, [this.id = -1, this.visible = true]);
+}
+
+final demoNames = <DemoItem>[
+  DemoItem('日期时间', 24),
+  DemoItem('无限滚动列表', 0),
+  DemoItem('显示网上的图片', 1),
+  DemoItem('水平(ListView)', 2),
+  DemoItem( '不同类型的子项', 3),
+  DemoItem('格子列表(GridList)', 4),
+  DemoItem('卡片列表(AnimatedList)', 5),
+  DemoItem('多级列表(ExpansionTile)', 6),
+  DemoItem('选项卡式AppBar', 7),
+  DemoItem('动画示例', 8),
+  DemoItem('绘制画布Canvas', 9),
+  DemoItem('异步加载列表', 10),
+  DemoItem('-'),
+  DemoItem('在线小说阅读', 11),
+  DemoItem('高德地图Demo', 23, false),
+  DemoItem('-'),
+  DemoItem('动画放大图像', 12),
+  DemoItem('按钮', 13),
+  DemoItem('-'),
+  DemoItem('浏览器 WebView', 14),
+  DemoItem('html标签富文本', 15),
+  DemoItem('Menu - Timeline', 16),
+  DemoItem('商品展示', 17),
+  DemoItem('动画控制示例', 18),
+  DemoItem('视差轮播动效', 19),
+  DemoItem('电影详情页面', 20),
+  DemoItem('图片测试列表', 21),
+  DemoItem('BMI Calculator', 22),
 ];
 
 class MyApp extends StatelessWidget {
-  Widget getWidget(BuildContext context, int i, String item) {
-    switch (i) {
+  Widget getWidget(BuildContext context, int id, String item) {
+    switch (id) {
       case 1:
         return new NetImageDemo(title: item);
       case 2:
@@ -89,34 +98,35 @@ class MyApp extends StatelessWidget {
       case 10:
         return new AsyncLoadListSample(title: item);
 
-      case 12:
+      case 11:
         return new OnlineNovelReadDemoSample(title: item);
 //      case 13:
-//        return new AMapDemoSample(title: item);
-//
-      case 15:
+//        return new AMapDemoSample(title: item);//
+      case 12:
         return new AnimatingWidgetAcrossDemo(title: item);
-      case 16:
+      case 13:
         return new ButtonSample(title: item);
 
-      case 18:
+      case 14:
         return new WebViewSample(title: item);
-      case 19:
+      case 15:
         return new HtmlViewSample(title: item);
-      case 20:
+      case 16:
         return new MenuUiChallengeSample();
-      case 21:
+      case 17:
         return new ShopGridSample();
-      case 22:
+      case 18:
         return new AnimateScrollSample();
-      case 23:
+      case 19:
         return new AnimateParallaxSwitchSample(title: item);
-      case 24:
+      case 20:
         return new MoiveDetailsSample();
-      case 25:
+      case 21:
         return new ImageListSample();
-      case 26:
+      case 22:
         return new BMICalculatorSample();
+      case 24:
+        return new DatetimeSample();
     }
     return null;
   }
@@ -125,9 +135,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final Map<String, WidgetBuilder> routes = new Map();
     for (int i = 0; i < demoNames.length; i++) {
-      String item = demoNames[i];
-      if (item == '-' || Tools.strIsEmpty(item)) continue;
-      routes["/$i"] = (BuildContext context) => getWidget(context, i, item);
+      DemoItem item = demoNames[i];
+      if (!item.visible || item.name == '-' || Tools.strIsEmpty(item.name)) continue;
+      routes["/$i"] = (BuildContext context) => getWidget(context, item.id, item.name);
     }
 
     return new MaterialApp(
@@ -204,13 +214,15 @@ class _MyHomePageState extends State<MyHomePage> {
           itemBuilder: (context, index) {
             if (index < demoNames.length) {
               final item = demoNames[index];
-              if (item == '-') {
+              if (!item.visible)
+                return SizedBox(height: 0);
+              if (item.name == '-') {
                 return new Divider();
               }
               return new ListTile(
                 leading: new Icon(Icons.list),
                 title: new Text(
-                  item,
+                  item.name,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   style: new TextStyle(
@@ -222,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 onTap: () {
                   if (index == 0)
-                    _showRandowWords(context, demoNames[0]);
+                    _showRandowWords(context, item.name);
                   else
                     Navigator.pushNamed(context, '/$index'); // 使用命名导航
                 },
