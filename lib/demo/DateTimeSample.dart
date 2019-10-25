@@ -11,7 +11,7 @@ class DatetimeSample extends StatefulWidget {
 class _DatetimeSampleState extends State<DatetimeSample> {
   var t1 = new DateTime.now();
   DateTime t2;
-  var t1Controller = TextEditingController(text: "100");
+  var t1Controller = TextEditingController(text: "10");
 
   void _updateDate() {
     t2 = Tools.dateOffset(t1, Tools.strToInt(t1Controller.text));
@@ -72,17 +72,17 @@ class _DatetimeSampleState extends State<DatetimeSample> {
                   focusedBorder: OutlineInputBorder(
                     gapPadding: 0.0,
                   ),
-                  suffix: DefaultTextStyle(style: TextStyle(fontSize: 14.0, color: Colors.black54), child: Wrap(
+                  suffix: DefaultTextStyle(style: TextStyle(fontSize: 13.0, color: Colors.black54), child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
                     children: <Widget>[
                       Text("天后是"),
-                      SizedBox(width: 8.0),
+                      SizedBox(width: 2.0),
                       Text("${t2 == null ? "" : Tools.dateToStr(t2) + ", " + getWeekDayStr(t2)}", style: TextStyle(color: Colors.green)),
-                      SizedBox(width: 8.0),
+                      SizedBox(width: 2.0),
                     ],
                   )),
                   prefixText: "的",
-                  prefixStyle: TextStyle(fontSize: 14.0),
+                  prefixStyle: TextStyle(fontSize: 13.0),
                   contentPadding: EdgeInsets.fromLTRB(12.0, 8.0, 8.0, 4.0),
                 ),
                 onSubmitted: (v) {

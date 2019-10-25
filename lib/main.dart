@@ -26,8 +26,8 @@ import './demo/MoiveDetailsSample.dart';
 import './demo/ImageListSample.dart';
 import './demo/BMICalculatorSample.dart';
 import './demo/DateTimeSample.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'demo/effect/bottom_navigator/EffectBootomNavigatorPage.dart';
 
 void main()  {
   // 屏幕只能垂直
@@ -45,6 +45,7 @@ class DemoItem {
 
 final demoNames = <DemoItem>[
   DemoItem('日期时间', 24),
+  DemoItem("动效 底部导航Q弹特效", 25),
   DemoItem('无限滚动列表', 0),
   DemoItem('显示网上的图片', 1),
   DemoItem('水平(ListView)', 2),
@@ -171,6 +172,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return new BMICalculatorSample();
       case 24:
         return new DatetimeSample();
+      case 25:
+        return new EffectBootomNavigatorPage();
     }
     return null;
   }
