@@ -36,7 +36,7 @@ class _EffectBootomNavigatorPageState extends State<EffectBootomNavigatorPage> {
         // Tools.toast("add");
       }),
       floatingActionTopOffset: 8.0,
-      floatingActionButtonWidth: 45.0,
+      floatingActionButtonWidth: 60.0,
       items: [
         BottomNavigationBarItem(icon: Icon(Icons.scanner)),
         BottomNavigationBarItem(icon: Icon(Icons.search), title: Text("Search")),
