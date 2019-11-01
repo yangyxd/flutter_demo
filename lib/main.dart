@@ -27,7 +27,7 @@ import './demo/ImageListSample.dart';
 import './demo/BMICalculatorSample.dart';
 import './demo/DateTimeSample.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'demo/effect/bottom_navigator/EffectBootomNavigatorPage.dart';
+import 'demo/effect/bottom_navigator/EffectBottomNavigatorPage.dart';
 
 void main()  {
   // 屏幕只能垂直
@@ -173,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case 24:
         return new DatetimeSample();
       case 25:
-        return new EffectBootomNavigatorPage();
+        return new EffectBottomNavigatorPage();
     }
     return null;
   }
